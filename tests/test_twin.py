@@ -322,7 +322,8 @@ def test_firmware_builds():
 
 def _renode_ready():
     from twin.renode_backend import DEFAULT_PORTABLE
-    os.environ.setdefault("PYRENODE_PATH", DEFAULT_PORTABLE)
+    if DEFAULT_PORTABLE:  # None until RENODE_PORTABLE/PYRENODE_PATH is set
+        os.environ.setdefault("PYRENODE_PATH", DEFAULT_PORTABLE)
     try:
         import pyrenode3  # noqa: F401
     except Exception as exc:

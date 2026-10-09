@@ -16,7 +16,8 @@ from race.renode_backend import RacePeriphBackend, TIM3_CNT, TIM4_CNT
 
 
 def main():
-    os.environ.setdefault("PYRENODE_PATH", DEFAULT_PORTABLE)
+    if DEFAULT_PORTABLE:  # None until RENODE_PORTABLE/PYRENODE_PATH is set
+        os.environ.setdefault("PYRENODE_PATH", DEFAULT_PORTABLE)
     fw = RacePeriphBackend(task=1, dt=COUPLING_S)
     ch = fw._ch
     started = time.monotonic()

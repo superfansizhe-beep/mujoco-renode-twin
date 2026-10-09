@@ -119,7 +119,8 @@ class TestLineFirmware(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         from bot.renode import DEFAULT_PORTABLE
-        os.environ.setdefault("PYRENODE_PATH", DEFAULT_PORTABLE)
+        if DEFAULT_PORTABLE:  # None until RENODE_PORTABLE/PYRENODE_PATH is set
+            os.environ.setdefault("PYRENODE_PATH", DEFAULT_PORTABLE)
         cls.elf = ROOT / "firmware" / "line_bringup.elf"
         if (not cls.elf.is_file() or not DEFAULT_PORTABLE
                 or not Path(DEFAULT_PORTABLE).is_dir()):

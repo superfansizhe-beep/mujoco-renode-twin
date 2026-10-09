@@ -22,7 +22,8 @@ ELF_PATH = os.path.join(REPO, "firmware", "race", "race_fw.elf")
 
 def _renode_ready():
     from bot.renode import DEFAULT_PORTABLE
-    os.environ.setdefault("PYRENODE_PATH", DEFAULT_PORTABLE)
+    if DEFAULT_PORTABLE:  # None until RENODE_PORTABLE/PYRENODE_PATH is set
+        os.environ.setdefault("PYRENODE_PATH", DEFAULT_PORTABLE)
     try:
         import pyrenode3  # noqa: F401
     except Exception as exc:
