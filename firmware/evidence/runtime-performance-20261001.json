@@ -1,0 +1,677 @@
+{
+  "measurement_date": "2026-10-01",
+  "retained_at_utc": "2026-10-01T14:46:25.506525+00:00",
+  "scope": "SIM backend host throughput and actual WebSocket transport. No physical MCU timing, physical speed, or browser rendering certification.",
+  "git_head": "265ec9ed1fe215eb5cbf4de0d50f512663d644c4",
+  "workspace_state": "Uncommitted tuning/monitoring and pre-existing C law extraction; source and artifact hashes pin these measurements.",
+  "accepted_changes": [
+    "ops.py accepts hostc and enables wall pacing for this native C backend.",
+    "race.perf_probe retains bounded unpaced baseline blocks and a separate instrumented/profile window.",
+    "Backend-only CPU/memory/latency, stage timing, heartbeat and provenance records; no additional monitoring UI."
+  ],
+  "production_elf_preserved": {
+    "path": "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf",
+    "sha256": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95"
+  },
+  "control_period_s": 0.005,
+  "world_speed_tuning": "firmware/evidence/speed-tuning-20261001.json",
+  "world_speed_tuning_sha256": "903360255cd7eda8f6c191787e8a9244ad56ecfd8fd35048a28d5490c2093afa",
+  "measurements": {
+    "native_unpaced": {
+      "scope": "SIM host throughput, excludes startup/warmup, rendering and wall pacing; not physical MCU latency or driving speed.",
+      "backend": "hostc",
+      "task": 2,
+      "control_period_s": 0.005,
+      "warmup_world_s": 1.0,
+      "blocks": [
+        {
+          "steps": 200,
+          "world_start_s": 1.0000000000000007,
+          "world_delta_s": 0.9999999999998899,
+          "wall_s": 0.09396299999207258,
+          "host_cpu_s": 0.09375,
+          "cpu_core_equivalents": 0.9977331503667343,
+          "rtf": 10.642486937243993,
+          "mean_step_ms": 0.4698149999603629,
+          "p95_step_ms": 0.6095999851822853,
+          "heartbeat_delta": 200,
+          "memory": {
+            "rss_mib": 410.37890625,
+            "peak_rss_mib": 415.74609375,
+            "private_mib": 1263.7890625
+          }
+        },
+        {
+          "steps": 200,
+          "world_start_s": 1.9999999999998905,
+          "world_delta_s": 0.9999999999998901,
+          "wall_s": 0.09042849997058511,
+          "host_cpu_s": 0.09375,
+          "cpu_core_equivalents": 1.0367306770597247,
+          "rtf": 11.058460555302515,
+          "mean_step_ms": 0.45214249985292554,
+          "p95_step_ms": 0.6107999943196774,
+          "heartbeat_delta": 200,
+          "memory": {
+            "rss_mib": 410.3828125,
+            "peak_rss_mib": 415.74609375,
+            "private_mib": 1263.7890625
+          }
+        },
+        {
+          "steps": 200,
+          "world_start_s": 2.9999999999997806,
+          "world_delta_s": 0.9999999999998899,
+          "wall_s": 0.07810199999948964,
+          "host_cpu_s": 0.078125,
+          "cpu_core_equivalents": 1.00029448670342,
+          "rtf": 12.803769429802367,
+          "mean_step_ms": 0.3905099999974482,
+          "p95_step_ms": 0.5305000231601298,
+          "heartbeat_delta": 200,
+          "memory": {
+            "rss_mib": 410.38671875,
+            "peak_rss_mib": 415.74609375,
+            "private_mib": 1263.7890625
+          }
+        }
+      ],
+      "median_rtf": 11.058460555302515,
+      "median_step_ms": 0.45214249985292554,
+      "stage_window": {
+        "steps": 200,
+        "wall_s": 0.09217740001622587,
+        "note": "Inclusive categories overlap; do not sum. This window includes instrumentation overhead.",
+        "categories": {
+          "read_sensors": {
+            "calls": 200,
+            "wall_s": 0.057086200336925685,
+            "wall_pct": 61.93079901025291
+          },
+          "step": {
+            "calls": 200,
+            "wall_s": 0.003946700249798596,
+            "wall_pct": 4.281635464988016
+          },
+          "apply_motors": {
+            "calls": 200,
+            "wall_s": 0.0018501003505662084,
+            "wall_pct": 2.007108412952131
+          },
+          "_observe_runtime": {
+            "calls": 200,
+            "wall_s": 0.001960199559107423,
+            "wall_pct": 2.126551148939297
+          }
+        }
+      },
+      "heartbeat": 1000,
+      "couplings": 1000,
+      "heartbeat_gaps": 0,
+      "artifact": {
+        "path": "D:\\Digital Twin\\build123d\\firmware\\race\\race_core.dll",
+        "sha256": "674c23a90dc6004421ef5300aed8889c5ae667ca907a65134e165cf14ece4688"
+      },
+      "source_sha256": {
+        "race/perf_probe.py": "40b7c96143a1647fe6706b986d511df4e8af89af58772de2677f9a7a0a68034b",
+        "race/loop.py": "709dd70aaf9d03d646424074e35c44822bb5bd631814f1a96b40291a23f254fa",
+        "race/renode_backend.py": "265f5da4b3ed2d717f399b8f0b5fb905d2a82259e5f3be3f887f766778cbb046",
+        "race/hostc_backend.py": "7641391d0beaeff4dd046b9eb0971548c91cae50d93a72c520ab76108d6a4a5d",
+        "bot/renode.py": "b5818df2c80ba452dfd9265599ea5c84babfd303277f821a8b1c743efe995623",
+        "firmware/race/race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
+        "firmware/race/race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
+        "bot/mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
+        "bot/motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622"
+      }
+    },
+    "renode_unpaced": {
+      "scope": "SIM host throughput, excludes startup/warmup, rendering and wall pacing; not physical MCU latency or driving speed.",
+      "backend": "renode",
+      "task": 2,
+      "control_period_s": 0.005,
+      "warmup_world_s": 1.0,
+      "blocks": [
+        {
+          "steps": 100,
+          "world_start_s": 1.0000000000000007,
+          "world_delta_s": 0.49999999999994493,
+          "wall_s": 2.8926256999839097,
+          "host_cpu_s": 4.0,
+          "cpu_core_equivalents": 1.3828266823537694,
+          "rtf": 0.17285333529420216,
+          "mean_step_ms": 28.926256999839097,
+          "p95_step_ms": 35.117699997499585,
+          "heartbeat_delta": 100,
+          "memory": {
+            "rss_mib": 1198.265625,
+            "peak_rss_mib": 1821.0546875,
+            "private_mib": 1973.1328125
+          }
+        },
+        {
+          "steps": 100,
+          "world_start_s": 1.4999999999999456,
+          "world_delta_s": 0.49999999999994493,
+          "wall_s": 3.1320454999804497,
+          "host_cpu_s": 4.484375,
+          "cpu_core_equivalents": 1.4317719841643397,
+          "rtf": 0.15964008185802728,
+          "mean_step_ms": 31.320454999804493,
+          "p95_step_ms": 37.635200016666204,
+          "heartbeat_delta": 100,
+          "memory": {
+            "rss_mib": 1198.1328125,
+            "peak_rss_mib": 1821.0546875,
+            "private_mib": 1973.05078125
+          }
+        },
+        {
+          "steps": 100,
+          "world_start_s": 1.9999999999998905,
+          "world_delta_s": 0.49999999999994515,
+          "wall_s": 3.409073199960403,
+          "host_cpu_s": 5.125,
+          "cpu_core_equivalents": 1.5033411427069174,
+          "rtf": 0.14666742855675635,
+          "mean_step_ms": 34.09073199960403,
+          "p95_step_ms": 39.75900000659749,
+          "heartbeat_delta": 100,
+          "memory": {
+            "rss_mib": 1198.03515625,
+            "peak_rss_mib": 1821.0546875,
+            "private_mib": 1972.90234375
+          }
+        }
+      ],
+      "median_rtf": 0.15964008185802728,
+      "median_step_ms": 31.320454999804493,
+      "stage_window": {
+        "steps": 100,
+        "wall_s": 3.6813803000259213,
+        "note": "Inclusive categories overlap; do not sum. This window includes instrumentation overhead.",
+        "categories": {
+          "read_sensors": {
+            "calls": 100,
+            "wall_s": 0.03848590032430366,
+            "wall_pct": 1.0454203909341468
+          },
+          "write_word": {
+            "calls": 1100,
+            "wall_s": 0.013377000228501856,
+            "wall_pct": 0.36336914793637776
+          },
+          "_write_bench": {
+            "calls": 100,
+            "wall_s": 0.01477050012908876,
+            "wall_pct": 0.40122179523220564
+          },
+          "run": {
+            "calls": 1952,
+            "wall_s": 1.3469174006022513,
+            "wall_pct": 36.58729310288229
+          },
+          "read_word": {
+            "calls": 1900,
+            "wall_s": 0.041266100481152534,
+            "wall_pct": 1.1209409818611233
+          },
+          "_inject_encoder": {
+            "calls": 200,
+            "wall_s": 1.4445212002610788,
+            "wall_pct": 39.23857582034944
+          },
+          "_drive_line": {
+            "calls": 100,
+            "wall_s": 0.00030830007744953036,
+            "wall_pct": 0.008374578346262122
+          },
+          "run_period": {
+            "calls": 100,
+            "wall_s": 2.1079603001708165,
+            "wall_pct": 57.26005270783825
+          },
+          "step": {
+            "calls": 100,
+            "wall_s": 3.6046856999746524,
+            "wall_pct": 97.91668901877024
+          },
+          "apply_motors": {
+            "calls": 100,
+            "wall_s": 0.0035723000182770193,
+            "wall_pct": 0.0970369732855871
+          },
+          "_observe_runtime": {
+            "calls": 100,
+            "wall_s": 0.003947200137190521,
+            "wall_pct": 0.10722065680534901
+          }
+        }
+      },
+      "heartbeat": 600,
+      "couplings": 600,
+      "heartbeat_gaps": 0,
+      "artifact": {
+        "path": "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf",
+        "sha256": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95"
+      },
+      "source_sha256": {
+        "race/perf_probe.py": "40b7c96143a1647fe6706b986d511df4e8af89af58772de2677f9a7a0a68034b",
+        "race/loop.py": "709dd70aaf9d03d646424074e35c44822bb5bd631814f1a96b40291a23f254fa",
+        "race/renode_backend.py": "265f5da4b3ed2d717f399b8f0b5fb905d2a82259e5f3be3f887f766778cbb046",
+        "race/hostc_backend.py": "7641391d0beaeff4dd046b9eb0971548c91cae50d93a72c520ab76108d6a4a5d",
+        "bot/renode.py": "b5818df2c80ba452dfd9265599ea5c84babfd303277f821a8b1c743efe995623",
+        "firmware/race/race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
+        "firmware/race/race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
+        "bot/mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
+        "bot/motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622"
+      }
+    },
+    "native_paced_transport": {
+      "scope": "SIM native C/physics with actual WebSocket transport and ops launcher. Transport FPS is not browser render FPS.",
+      "transport": {
+        "state_frames": 150,
+        "transport_fps": 29.635007097779425,
+        "wall_s": 5.027837500034366,
+        "world_s": 4.925,
+        "live_rtf": 0.9795463755474072,
+        "p95_gap_ms": 46.49829998379573,
+        "unique_world_timestamps": 150
+      },
+      "command_latency": [
+        {
+          "command": "pause",
+          "seconds": 0.03102639998542145
+        },
+        {
+          "command": "run",
+          "seconds": 0.03074299998115748
+        },
+        {
+          "command": "pause",
+          "seconds": 0.031713100033812225
+        },
+        {
+          "command": "run",
+          "seconds": 0.03255349997198209
+        },
+        {
+          "command": "pause",
+          "seconds": 0.04632530000526458
+        },
+        {
+          "command": "run",
+          "seconds": 0.030858499987516552
+        },
+        {
+          "command": "pause",
+          "seconds": 0.0318455999949947
+        },
+        {
+          "command": "run",
+          "seconds": 0.0295001000049524
+        }
+      ],
+      "pause_median_ms": 31.779350014403462,
+      "run_median_ms": 30.800749984337017,
+      "paused_world_and_firmware_frozen": true,
+      "ordinary_frames_omit_debug": true
+    }
+  },
+  "commands": {
+    "native": ".venv\\Scripts\\python.exe -m race.perf_probe --backend hostc --seconds 1 --blocks 3 --warmup 1 --output output/performance-20261001/native-current.json",
+    "renode": ".venv\\Scripts\\python.exe -m race.perf_probe --backend renode --seconds 0.5 --blocks 3 --warmup 1 --output output/performance-20261001/renode-current.json",
+    "paced_service": ".venv\\Scripts\\python.exe ops.py start race --task 4 --backend hostc --port 18766"
+  },
+  "findings": {
+    "renode_controller_peripheral_inclusive_pct": 97.91668901877024,
+    "renode_encoder_inclusive_pct": 39.23857582034944,
+    "renode_firmware_period_inclusive_pct": 57.26005270783825,
+    "stage_scope": "Inclusive timings overlap; controller step includes peripheral injection and guest execution. Not C law instruction timing.",
+    "interpretation": "The sampled Renode path dominates host step time. Native C has normal-world pacing headroom; these measurements do not establish a need for GPU or an architecture replacement."
+  },
+  "host_variability": {
+    "earlier_same_source_native_rtf": 4.021439096439675,
+    "earlier_same_source_renode_rtf": 0.05734271353847606,
+    "note": "Earlier same-source measurements used different windows/host conditions. They are not a matched before/after experiment and no accepted Renode speedup is claimed."
+  },
+  "rejected_experiments": {
+    "scheduler": {
+      "adopted": false,
+      "decision": "No substantial gain across immediate advancement, larger quantum and serial scheduling; preserve production scheduler.",
+      "results": [
+        {
+          "tag": "baseline",
+          "quantum_us": 100,
+          "advance_immediately": false,
+          "execute_in_serial": false,
+          "steps": 400,
+          "steady_mean_ms": 28.742512000899296,
+          "local_quantum": "00:00:00.000100000",
+          "steady_p95_ms": 34.787199983838946,
+          "total_host_cpu_s": 18.03125,
+          "heartbeat": 400,
+          "virtual_start": "00:00:00.050000000",
+          "virtual_end": "00:00:02.098440000",
+          "different_output_count": 0,
+          "first_differences": []
+        },
+        {
+          "tag": "immediate",
+          "quantum_us": 100,
+          "advance_immediately": true,
+          "execute_in_serial": false,
+          "steps": 400,
+          "steady_mean_ms": 28.205629499279894,
+          "local_quantum": "00:00:00.000100000",
+          "steady_p95_ms": 33.199099998455495,
+          "total_host_cpu_s": 13.921875,
+          "heartbeat": 400,
+          "virtual_start": "00:00:00.050000000",
+          "virtual_end": "00:00:02.098440000",
+          "different_output_count": 0,
+          "first_differences": []
+        },
+        {
+          "tag": "quantum1ms",
+          "quantum_us": 1000,
+          "advance_immediately": false,
+          "execute_in_serial": false,
+          "steps": 400,
+          "steady_mean_ms": 27.864515000546817,
+          "local_quantum": "00:00:00.001000000",
+          "steady_p95_ms": 33.09050004463643,
+          "total_host_cpu_s": 12.546875,
+          "heartbeat": 400,
+          "virtual_start": "00:00:00.050000000",
+          "virtual_end": "00:00:02.098440000",
+          "different_output_count": 0,
+          "first_differences": []
+        },
+        {
+          "tag": "quantum5ms",
+          "quantum_us": 5000,
+          "advance_immediately": false,
+          "execute_in_serial": false,
+          "steps": 400,
+          "steady_mean_ms": 28.229286500718445,
+          "local_quantum": "00:00:00.005000000",
+          "steady_p95_ms": 34.302700019907206,
+          "total_host_cpu_s": 12.234375,
+          "heartbeat": 400,
+          "virtual_start": "00:00:00.050000000",
+          "virtual_end": "00:00:02.098440000",
+          "different_output_count": 0,
+          "first_differences": []
+        },
+        {
+          "tag": "serial5ms",
+          "quantum_us": 5000,
+          "advance_immediately": false,
+          "execute_in_serial": true,
+          "steps": 400,
+          "steady_mean_ms": 27.514687495713588,
+          "local_quantum": "00:00:00.005000000",
+          "steady_p95_ms": 32.92559995315969,
+          "total_host_cpu_s": 12.21875,
+          "heartbeat": 400,
+          "virtual_start": "00:00:00.050000000",
+          "virtual_end": "00:00:02.098440000",
+          "different_output_count": 0,
+          "first_differences": []
+        },
+        {
+          "tag": "local1ms",
+          "quantum_us": 1000,
+          "advance_immediately": false,
+          "execute_in_serial": false,
+          "steps": 400,
+          "steady_mean_ms": 26.334411998395808,
+          "local_quantum": "00:00:00.001000000",
+          "steady_p95_ms": 32.51649998128414,
+          "total_host_cpu_s": 11.65625,
+          "heartbeat": 400,
+          "virtual_start": "00:00:00.050000000",
+          "virtual_end": "00:00:02.098440000",
+          "different_output_count": 0,
+          "first_differences": []
+        },
+        {
+          "tag": "local5ms",
+          "quantum_us": 5000,
+          "advance_immediately": false,
+          "execute_in_serial": false,
+          "steps": 400,
+          "steady_mean_ms": 27.83630999707384,
+          "local_quantum": "00:00:00.005000000",
+          "steady_p95_ms": 35.257100011222064,
+          "total_host_cpu_s": 11.953125,
+          "heartbeat": 400,
+          "virtual_start": "00:00:00.050000000",
+          "virtual_end": "00:00:02.098440000",
+          "different_output_count": 0,
+          "first_differences": []
+        },
+        {
+          "tag": "localserial5ms",
+          "quantum_us": 5000,
+          "advance_immediately": false,
+          "execute_in_serial": true,
+          "steps": 400,
+          "steady_mean_ms": 27.377388500026427,
+          "local_quantum": "00:00:00.005000000",
+          "steady_p95_ms": 35.7182000298053,
+          "total_host_cpu_s": 12.234375,
+          "heartbeat": 400,
+          "virtual_start": "00:00:00.050000000",
+          "virtual_end": "00:00:02.098440000",
+          "different_output_count": 0,
+          "first_differences": []
+        }
+      ]
+    },
+    "firmware_polling": {
+      "adopted": false,
+      "decision": "Both isolated 250-us polling variants were slower despite matching all 600 motor frames, heartbeat, serial replies and virtual end time. Production C and ELF were not replaced.",
+      "nop32_results": [
+        {
+          "tag": "baseline",
+          "mean_ms": 32.093089249392506,
+          "p95_ms": 39.58000004058704,
+          "steps": 600,
+          "heartbeat": 600,
+          "differing_cycles": 0,
+          "first_differences": [],
+          "serial": {
+            "enabled": true,
+            "rx_pending_bytes": 0,
+            "pending_command": null,
+            "tx_total_bytes": 926,
+            "latest_telemetry": "T 600 -327 -327 11096 2695 0 1",
+            "events": [
+              {
+                "seq": 1,
+                "text": "UP"
+              },
+              {
+                "seq": 2,
+                "text": "resume"
+              },
+              {
+                "seq": 3,
+                "text": "pong",
+                "command": "ping"
+              },
+              {
+                "seq": 4,
+                "text": "T 454 -278 -278 11096 1965 0 1",
+                "command": "stat"
+              }
+            ],
+            "last_seq": 4,
+            "gdb_port": null
+          },
+          "virtual_end": "00:00:03.169840000"
+        },
+        {
+          "tag": "polling250",
+          "mean_ms": 121.37420800005202,
+          "p95_ms": 154.55849998397753,
+          "steps": 600,
+          "heartbeat": 600,
+          "differing_cycles": 0,
+          "first_differences": [],
+          "serial": {
+            "enabled": true,
+            "rx_pending_bytes": 0,
+            "pending_command": null,
+            "tx_total_bytes": 926,
+            "latest_telemetry": "T 600 -327 -327 11096 2695 0 1",
+            "events": [
+              {
+                "seq": 1,
+                "text": "UP"
+              },
+              {
+                "seq": 2,
+                "text": "resume"
+              },
+              {
+                "seq": 3,
+                "text": "pong",
+                "command": "ping"
+              },
+              {
+                "seq": 4,
+                "text": "T 454 -278 -278 11096 1965 0 1",
+                "command": "stat"
+              }
+            ],
+            "last_seq": 4,
+            "gdb_port": null
+          },
+          "virtual_end": "00:00:03.169840000"
+        }
+      ],
+      "nop256_results": [
+        {
+          "tag": "baseline",
+          "mean_ms": 32.32359799963888,
+          "p95_ms": 40.84740002872422,
+          "steps": 600,
+          "heartbeat": 600,
+          "differing_cycles": 0,
+          "first_differences": [],
+          "serial": {
+            "enabled": true,
+            "rx_pending_bytes": 0,
+            "pending_command": null,
+            "tx_total_bytes": 926,
+            "latest_telemetry": "T 600 -327 -327 11096 2695 0 1",
+            "events": [
+              {
+                "seq": 1,
+                "text": "UP"
+              },
+              {
+                "seq": 2,
+                "text": "resume"
+              },
+              {
+                "seq": 3,
+                "text": "pong",
+                "command": "ping"
+              },
+              {
+                "seq": 4,
+                "text": "T 454 -278 -278 11096 1965 0 1",
+                "command": "stat"
+              }
+            ],
+            "last_seq": 4,
+            "gdb_port": null
+          },
+          "virtual_end": "00:00:03.169840000"
+        },
+        {
+          "tag": "polling250-nop256",
+          "mean_ms": 118.40550950058969,
+          "p95_ms": 152.90869999444112,
+          "steps": 600,
+          "heartbeat": 600,
+          "differing_cycles": 0,
+          "first_differences": [],
+          "serial": {
+            "enabled": true,
+            "rx_pending_bytes": 0,
+            "pending_command": null,
+            "tx_total_bytes": 926,
+            "latest_telemetry": "T 600 -327 -327 11096 2695 0 1",
+            "events": [
+              {
+                "seq": 1,
+                "text": "UP"
+              },
+              {
+                "seq": 2,
+                "text": "resume"
+              },
+              {
+                "seq": 3,
+                "text": "pong",
+                "command": "ping"
+              },
+              {
+                "seq": 4,
+                "text": "T 454 -278 -278 11096 1965 0 1",
+                "command": "stat"
+              }
+            ],
+            "last_seq": 4,
+            "gdb_port": null
+          },
+          "virtual_end": "00:00:03.169840000"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "command": ".venv\\Scripts\\python.exe -m unittest tests.test_race_perf tests.test_race_tuning.RaceTuning tests.test_hostc_race tests.test_race_cli.TestFirmwareLaunch -v",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "checks": [
+      "real native C cycle counts and usable cProfile",
+      "full-period actuator-delay stress mission and stop hold",
+      "same-input C/Python duty parity",
+      "Task 2 closed-loop mission parity",
+      "peripheral factory configuration"
+    ],
+    "transport": "150 unique state frames, four pause/run pairs, paused plant and heartbeat frozen; ordinary frames omit debug.",
+    "cleanup": "Temporary test services on ports 15173 and 18766 stopped; no UI checks remain active."
+  },
+  "source_sha256": {
+    "ops.py": "29209c1ebba35746644283d458cb5395a1cbcf5466e89c27e6fcc4337781e790",
+    "race/perf_probe.py": "40b7c96143a1647fe6706b986d511df4e8af89af58772de2677f9a7a0a68034b",
+    "tests/test_race_perf.py": "e19b70a619da3e0869a2798508d5b2b294b161ceeda348bcf9b5966c330e191e",
+    "race/README.md": "55d5ffea3e6d991eef490fa14c97bdb6605e3bada99c5980b389e4b60871e3db",
+    "firmware/race_status.md": "fe12c2a09d67dc24c78512c55b9279b9abc7e44ad353f21f6989b4f127ba23f5",
+    "firmware/race/main.c": "2b370720880087c11514e1cc17b3e57fd01933a2f67ae9af4f32860fcdc4684e",
+    "firmware/race/race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
+    "firmware/race/race_law.h": "fa754a9ba33a779cbd6be02089d2dab008ab9008d692c8e78161348e53ee7405",
+    "firmware/race/race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d"
+  },
+  "raw_evidence_sha256": {
+    "output/performance-20261001/native-current.json": "70af93478b4395b66bd76aca426c7dbf28d1d722f2db9aaa0a1554c2ae248df2",
+    "output/performance-20261001/renode-current.json": "26b7f10912ef6c7a7895e0460db9aaae664d76f11f4e2ac12dec0200988efd38",
+    "output/performance-20261001/hostc-live-current.json": "fdb8bf2bd7de3e7edc42d1d1f5c3ebe5cda2a88dc373f3639d95c35419e9686a",
+    "output/performance-20261001/current-baseline.json": "c883c9ff6a00fb23dfa596646bcb880e65bc3ff31e1c1335714c7562fdecc116",
+    "output/performance-20261001/quantum-probe.json": "4fe76052bc09fbca562b442a4ac40a362106a1b89da4efb990aaaa08b9ec9806",
+    "output/performance-20261001/polling-probe.json": "65328b38da871e0bc5875001993967f52b2d5546a4f46a7c93349009371cb5c1",
+    "output/performance-20261001/polling250-nop256-probe.json": "ac6f55b67a88e088415288cd898158e2a0089510bd624ac3e862d4d30d804fbf",
+    "output/performance-20261001/native-final-gates.log": "ad2dc4ef2574a4ecda71ff3466c452784c7f607cfaf0bc9c1003e1590efd0b34",
+    "output/performance-20261001/live_hostc_check.py": "32b5f27a006c98f45da1cb7ee2e0d8416df7b3e3daccea65b44b9f409538a70e",
+    "output/performance-20261001/quantum_probe.py": "fcae7bd3fff4cf8943ec7f7b26c7bb777385d9c9639dda0e4eb23fe18340237d",
+    "output/performance-20261001/polling_probe.py": "bafb7b82ec77ec28ece4150ca35e2fc6ee41dc264f501cb3267f108a45256288"
+  }
+}

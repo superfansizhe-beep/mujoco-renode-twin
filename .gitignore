@@ -1,0 +1,37 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Node / web viewer
+node_modules/
+
+# Generated CAD and render artifacts (regenerate via module __main__ / _preview)
+output/
+web/public/models/
+/*.step
+web/debug.png
+
+# Firmware build artifacts (rebuild via firmware/twin/build.sh, firmware/race/build.sh;
+# the host DLL rebuilds via bot.hostc.build_core_dll)
+firmware/**/*.elf
+firmware/**/*.map
+firmware/**/*.dll
+
+# ZCode host session state (plans are per-session; drafts/runs self-ignore;
+# .zcode/workflows/ stays trackable -- those are deliberate saves)
+.zcode/plans/
+
+# Third-party vendor geometry is FETCHED, never redistributed
+# (sources + expected layout: assets/vendor/README.md)
+assets/vendor/*
+!assets/vendor/README.md
+!assets/vendor/jgb37-520
+assets/vendor/jgb37-520/*
+!assets/vendor/jgb37-520/README.md

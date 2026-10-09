@@ -1,0 +1,30 @@
+[project]
+name = "cad-modeling"
+version = "0.1.0"
+description = "Digital Twin CAD modeling workspace (build123d)"
+authors = [
+    { name = "reng", email = "3524722473@qq.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "build123d>=0.13.0",
+    "mujoco>=3.13.0",
+    "scipy>=1.18.1",
+    "websockets>=17.1",
+]
+
+[project.optional-dependencies]
+renode = [
+    "pyrenode3[all]",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
+
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple/"
+default = true
+
+[tool.uv.sources]
+pyrenode3 = { git = "https://github.com/antmicro/pyrenode3.git" }

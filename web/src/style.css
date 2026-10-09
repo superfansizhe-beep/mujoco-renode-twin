@@ -1,0 +1,104 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #app { width: 100%; height: 100%; overflow: hidden; background: #1a1d23; }
+#scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#loading {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #8a91a0; background: #1a1d23; font-family: system-ui, sans-serif;
+}
+#loading.hidden { display: none; }
+
+#tooltip {
+  position: absolute; z-index: 10; padding: 4px 10px; border-radius: 6px;
+  background: #262b34ee; color: #dfe4ee; font: 12px/1.4 system-ui, sans-serif;
+  pointer-events: none; white-space: nowrap; transform: translate(12px, -26px);
+}
+#tooltip.hidden { display: none; }
+
+/* ---------- HUD (kept translucent + compact; the scene frame owns
+   which button rows exist) ---------- */
+#hud {
+  position: absolute; top: 14px; right: 14px; z-index: 9;
+  padding: 6px 9px; border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(38, 43, 52, 0.38); color: #dfe4ee;
+  font: 11px/1.45 system-ui, sans-serif;
+  backdrop-filter: blur(4px);
+}
+#hud.hidden { display: none; }
+/* Keep the car and floor visible on narrow race panels. The task strip stays
+   scrollable in car view; sensor focus gives the optical projection more room. */
+@media (max-width: 650px) {
+  #app.race-mode #hud { left: 14px; right: 14px; }
+  #app.race-mode #hud .hud-grid > :not(:nth-last-child(-n+2)),
+  #app.race-mode #hud-note { display: none !important; }
+  #app.race-mode #task-btns { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; }
+  #app.race-mode #task-btns button { flex: 0 0 auto; white-space: nowrap; }
+  #app.sensor-focus #task-btns { display: none !important; }
+  #app.race-mode #line-panel { bottom: 8px; padding: 8px 10px; }
+  #app.race-mode .line-sides { margin-top: 4px; }
+  #app.race-mode .line-channels { margin: 2px 0; }
+  #app.race-mode .line-channel { gap: 1px; padding: 1px 0; }
+  #app.race-mode .line-status { margin-top: 4px; }
+  #app.race-mode .line-correction,
+  #app.race-mode .line-bits { margin-top: 1px; }
+  #app.race-mode #line-panel details { margin-top: 3px; }
+}
+.hud-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.hud-title { font-weight: 600; margin-bottom: 4px; }
+.hud-grid {
+  display: grid; grid-template-columns: auto 1fr; gap: 1px 8px;
+  font-variant-numeric: tabular-nums; margin-bottom: 6px;
+}
+.hud-grid .k { color: #8a91a0; }
+.hud-grid .v { text-align: right; }
+.conn-down { color: #e06c60; }
+.conn-live { color: #7bd88f; }
+.hud-btns { flex-wrap: wrap; }
+.hud-btns button {
+  padding: 2px 8px; border: none; border-radius: 6px; cursor: pointer;
+  background: #3a4250; color: #dfe4ee; font: 11px system-ui, sans-serif;
+}
+.hud-btns button:hover { background: #4a5464; }
+.hud-btns button.active { background: #4d78b8; }
+.hud-note { margin-top: 4px; color: #8a91a0; font-size: 10px; }
+
+.grade {
+  margin-top: 6px; padding: 4px 8px; border-radius: 6px;
+  font: 12px system-ui, sans-serif; font-weight: 600;
+}
+.grade-pass { background: #1d3b2a; color: #7fd8a4; }
+.grade-fail { background: #3b1d1d; color: #e39a9a; }
+
+.hidden { display: none !important; }
+
+#line-panel {
+  position: absolute; bottom: 18px; left: 18px; z-index: 9;
+  width: 390px; max-width: calc(100vw - 36px); padding: 14px 16px;
+  border-radius: 12px; border: 1px solid #52616d;
+  background: rgba(25, 31, 37, 0.93); color: #e6edf2;
+  font: 12px/1.5 system-ui, sans-serif; backdrop-filter: blur(8px);
+}
+.line-heading, .line-sides { display: flex; justify-content: space-between; gap: 8px; }
+.line-heading strong { font-size: 14px; }
+.line-illumination { font-size: 10px; color: #8bd0d9; }
+.line-legend { color: #bac5cc; margin-top: 3px; }
+.line-sides { font-size: 10px; color: #90a6b5; margin-top: 12px; }
+.line-channels { display: grid; grid-template-columns: repeat(8, 1fr); margin: 6px 0; }
+.line-channel { position: relative; display: flex; align-items: center; flex-direction: column; gap: 3px; padding: 4px 0; }
+.line-channel:nth-child(4)::after { content: ''; position: absolute; right: -1px; top: 0; height: 100%; border-right: 1px dashed #dbbc7c; }
+.channel-lamp { width: 15px; height: 15px; border-radius: 50%; border: 1px solid #84929c; background: #172025; }
+.led-on .channel-lamp { background: #ffe58b; border-color: #fff5c9; box-shadow: 0 0 9px #ffd56d88; }
+.channel-number { font-weight: 600; }
+.channel-ground { font-size: 9px; color: #abb9c3; }
+.led-off .channel-ground { color: #e6d29b; }
+.channel-coverage { width: 24px; height: 3px; background: #56616b; overflow: hidden; }
+.channel-coverage i { display: block; height: 100%; background: #0c1013; }
+.line-center-note { text-align: center; font-size: 10px; color: #b7a77e; }
+.line-status { margin-top: 10px; color: #9edda8; font-weight: 600; }
+.line-status.ambiguous { color: #e6bd7a; }
+.line-correction, .line-bits { margin-top: 4px; font-size: 11px; color: #b7c3cc; font-variant-numeric: tabular-nums; }
+.line-bits { font-family: ui-monospace, monospace; }
+#line-panel details { margin-top: 7px; color: #8799a8; font-size: 10px; }
+#line-panel summary { cursor: pointer; }
+.unknown .channel-lamp { background: #52616b; box-shadow: none; }
+.out-of-range { opacity: 0.5; }

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balance Bot Twin</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+      <div id="loading">Loading…</div>
+      <div id="tooltip" class="hidden"></div>
+
+      <div id="hud" class="hidden">
+        <div class="hud-row hud-title">
+          <span id="hud-mode">—</span>
+          <span id="hud-conn" class="conn-down">●</span>
+        </div>
+        <div class="hud-grid">
+          <span class="k">Tilt</span><span class="v" id="hud-tilt">—</span>
+          <span class="k">Pos y</span><span class="v" id="hud-y">—</span>
+          <span class="k">Speed</span><span class="v" id="hud-speed">—</span>
+          <span class="k">Duty L/R</span><span class="v" id="hud-duty">—</span>
+          <span class="k">Enc L/R</span><span class="v" id="hud-enc">—</span>
+          <span class="k">Batt</span><span class="v" id="hud-batt">—</span>
+          <span class="k">Control cycles</span><span class="v" id="hud-fw">—</span>
+          <span class="k">Time</span><span class="v" id="hud-time">—</span>
+        </div>
+        <div class="hud-row hud-btns hidden" id="task-btns"></div>
+        <div class="hud-row grade hidden" id="grade-banner"></div>
+        <div class="hud-row hud-btns hidden" id="replay-btns"></div>
+        <div class="hud-row hud-btns hidden" id="twin-btns">
+          <button id="btn-kick-n">Kick−</button>
+          <button id="btn-kick-p">Kick+</button>
+          <button id="btn-mode">Mode</button>
+        </div>
+        <div class="hud-row hud-btns hidden" id="shared-btns">
+          <button id="btn-reset">Reset</button>
+          <button id="btn-pause">Pause</button>
+          <button id="btn-guides" class="hidden">Route guides</button>
+          <button id="btn-sensor-view" class="hidden">Sensor view</button>
+          <button id="btn-follow-car" class="hidden">Follow car</button>
+        </div>
+        <div class="hud-note" id="hud-note">Idle mode: explode/hover available</div>
+      </div>
+      <aside id="line-panel" class="hidden" aria-label="Live eight-channel line sensor"></aside>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

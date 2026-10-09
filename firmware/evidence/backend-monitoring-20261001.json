@@ -1,0 +1,800 @@
+{
+  "scope": "SIM backend monitoring and UI simplification. No new driving-speed or physical-board proof.",
+  "verified_at_utc": "2026-10-02T05:42:39.772458+00:00",
+  "head": "265ec9ed1fe215eb5cbf4de0d50f512663d644c4",
+  "changes": [
+    "Removed diagnostics drawer, button, styles and web/src/raceDebug.ts",
+    "Default state frames omit debug and do not read controller symbols",
+    "Backend runtime/UART events recorded at coupling boundaries without snapshot consumers",
+    "Existing serial replies tagged with command; no new firmware telemetry emission",
+    "Optional --monitor-stream and python -m race.monitor JSON terminal client",
+    "Snapshots always include diagnostic estimates/history, including stream-disabled sessions"
+  ],
+  "firmware_elf_sha256": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
+  "source_sha256": {
+    "race/__main__.py": "5aaa2dc4ea64216cfe6f665d65421edc0b6a52827903888d41535425778c6127",
+    "race/loop.py": "e63ce6bfa97dc64560e58d81f7584dda8160756ea63fbb13f382b05a32d349c7",
+    "race/monitor.py": "ce3e11e60ee0387ecef3c9e44910294f1ee76984d0a28c6045727ad2b3b42a4f",
+    "race/monitoring.py": "7dba7f712e391c0c68d7fe7cc7368edb91df0f245e393d2c4db980fdae0afe38",
+    "race/diagnostics.py": "b6f7c6bd7dc82e9520cb2a918003cbbbe6f477a31bc96856c98173cc02957cf3",
+    "race/renode_backend.py": "265f5da4b3ed2d717f399b8f0b5fb905d2a82259e5f3be3f887f766778cbb046",
+    "tests/test_race_monitoring.py": "c914fa76fd7fb36619624e621703261ddeb7183a44d76f5ed22c487feb765752",
+    "tests/test_race_cli.py": "a1c0130d56c827de5b77b83bad559ce806f605fa2335ded025f61676001c0627",
+    "web/index.html": "a6b760eb7de276d456d1bc1fffc900a092774c15abba894d2061024a964c3df9",
+    "web/src/main.ts": "aab7414927069938aa82e669faae41843105114a8e48f595ac0c166c818d47dd",
+    "web/src/style.css": "b509fd6fff3f2bdaf2de2f704a6405ed8f25fc402ec0e150790dbabc9076c926",
+    "race/README.md": "55d5ffea3e6d991eef490fa14c97bdb6605e3bada99c5980b389e4b60871e3db",
+    "firmware/race_status.md": "fe12c2a09d67dc24c78512c55b9279b9abc7e44ad353f21f6989b4f127ba23f5"
+  },
+  "gates": {
+    "tests_run": 16,
+    "passed_test_ids": [
+      "tests.test_race_monitoring.HostCMonitoring.test_snapshots_do_not_change_outputs_or_world_and_reject_stale_cycle",
+      "tests.test_race_monitoring.HostCMonitoring.test_terminal_client_controls_and_exports_actual_backend_without_a_viewer",
+      "tests.test_race_monitoring.HostCMonitoring.test_viewer_skips_symbol_reads_but_backend_events_and_exports_continue",
+      "tests.test_race_monitoring.Monitoring.test_event_log_write_failure_does_not_interrupt_control",
+      "tests.test_race_monitoring.Monitoring.test_history_is_bounded_and_resets_have_distinct_identity",
+      "tests.test_race_monitoring.Monitoring.test_missing_symbol_file_reports_unavailable",
+      "tests.test_race_monitoring.Monitoring.test_sustained_alerts_do_not_flood_and_blind_legs_do_not_trigger_recovery",
+      "tests.test_race_monitoring.RenodeMonitoring.test_serial_commands_and_symbol_reads_preserve_lockstep_and_gdb_reads_paused_board",
+      "tests.test_hostc_race.HostCRace.test_duty_series_matches_stub_on_identical_frames",
+      "tests.test_hostc_race.HostCRace.test_task2_mission_matches_stub_closed_loop",
+      "tests.test_race_cli.TestFirmwareLaunch.test_all_task_runner_passes_the_selected_battery_to_the_world",
+      "tests.test_race_cli.TestFirmwareLaunch.test_cli_passes_configuration_to_the_peripheral_backend",
+      "tests.test_race_cli.TestFirmwareLaunchRuntime.test_native_encoder_input_matches_monitor_and_keeps_pin_guards",
+      "tests.test_race_cli.TestFirmwareLaunchRuntime.test_public_factory_runs_real_gpio_sensor_cycles",
+      "tests.test_race.TestStateProtocol.test_state_has_twin_pose_fields",
+      "tests.test_race.TestStateProtocol.test_state_schema_and_speed_pinned"
+    ],
+    "failures": [],
+    "errors": [],
+    "skips": []
+  },
+  "real_renode_terminal_client": {
+    "inspect": {
+      "exit_code": 0,
+      "stderr": "",
+      "frames": [
+        {
+          "type": "state",
+          "t": 0.335,
+          "pos": [
+            0.59809,
+            1.0,
+            1e-05
+          ],
+          "quat_xyzw": [
+            0.0207,
+            0.0207,
+            0.706805,
+            0.706803
+          ],
+          "wheel_deg": [
+            2.73,
+            2.73
+          ],
+          "tilt_deg": 3.36,
+          "speed_mps": 0.001,
+          "duty": [
+            -5,
+            -5
+          ],
+          "enc": [
+            0,
+            0
+          ],
+          "batt_v": 11.1,
+          "fw_seq": 67,
+          "paused": true,
+          "fallen": false,
+          "mission": {
+            "task": 2,
+            "phase": "run",
+            "seg": "AB",
+            "seg_i": 0,
+            "lap": 1,
+            "laps": 1,
+            "v_plan": 0.084,
+            "odo": [
+              0.6,
+              1.0
+            ],
+            "psi": null,
+            "e_lat_mm": 0.0,
+            "line_bits": 0,
+            "line_source": "odometry",
+            "w_meas": null,
+            "w_cmd": null,
+            "buzzer": false,
+            "led": false,
+            "events": [
+              {
+                "kind": "start",
+                "node": "A",
+                "t": 0.005,
+                "gt_dist": 0.0
+              }
+            ],
+            "t_start": 0.3,
+            "t_done": null,
+            "elapsed": 0.03
+          },
+          "line": {
+            "black_bits": 0,
+            "indicator_bits": 255,
+            "gpio_bits": 255,
+            "valid_bits": 255,
+            "illumination_on": true,
+            "coverage": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "spots": [
+              [
+                0.640157424876312,
+                0.9615000886703676,
+                0.0015
+              ],
+              [
+                0.6401574005249973,
+                0.9725000886703407,
+                0.0015
+              ],
+              [
+                0.6401573761736825,
+                0.9835000886703138,
+                0.0015
+              ],
+              [
+                0.6401573518223678,
+                0.9945000886702867,
+                0.0015
+              ],
+              [
+                0.640157327471053,
+                1.0055000886702599,
+                0.0015
+              ],
+              [
+                0.6401573031197383,
+                1.016500088670233,
+                0.0015
+              ],
+              [
+                0.6401572787684235,
+                1.027500088670206,
+                0.0015
+              ],
+              [
+                0.6401572544171088,
+                1.038500088670179,
+                0.0015
+              ]
+            ],
+            "positions": [
+              [
+                0.6408804317116549,
+                0.9615000900216308,
+                0.012568020352344549
+              ],
+              [
+                0.6408804073728509,
+                0.9725000900216039,
+                0.012568020569819233
+              ],
+              [
+                0.6408803830340469,
+                0.983500090021577,
+                0.012568020787293917
+              ],
+              [
+                0.640880358695243,
+                0.99450009002155,
+                0.012568021004768599
+              ],
+              [
+                0.640880334356439,
+                1.0055000900215232,
+                0.012568021222243281
+              ],
+              [
+                0.640880310017635,
+                1.0165000900214962,
+                0.012568021439717966
+              ],
+              [
+                0.640880285678831,
+                1.0275000900214692,
+                0.01256802165719265
+              ],
+              [
+                0.6408802613400271,
+                1.0385000900214423,
+                0.012568021874667332
+              ]
+            ],
+            "seq": 66,
+            "consumed_bits": 0,
+            "observation": {
+              "bits": 0,
+              "count": 0,
+              "groups": 0,
+              "status": "lost",
+              "valid": false,
+              "error_mm": null,
+              "bar_centered": false
+            },
+            "matches": true,
+            "expected_tape": false
+          },
+          "debug": {
+            "schema": 1,
+            "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+            "events": [
+              {
+                "seq": 1,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "simulation.reset",
+                "world_s": 0.0,
+                "fw_seq": 0,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {
+                  "task": 2,
+                  "backend": "fw-periph[race_fw.elf]"
+                }
+              },
+              {
+                "seq": 2,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "simulation.paused",
+                "world_s": 0.0,
+                "fw_seq": 0,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {}
+              },
+              {
+                "seq": 3,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "serial.rx",
+                "world_s": 0.0,
+                "fw_seq": 0,
+                "severity": "info",
+                "source": "firmware_uart",
+                "details": {
+                  "text": "UP",
+                  "serial_seq": 1,
+                  "command": null
+                }
+              },
+              {
+                "seq": 4,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "mission.phase_segment",
+                "world_s": 0.0,
+                "fw_seq": 1,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {
+                  "phase": "arm",
+                  "segment": "AB",
+                  "seg_i": 0,
+                  "lap": 1
+                }
+              },
+              {
+                "seq": 5,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "mission.start",
+                "world_s": 0.0,
+                "fw_seq": 1,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {
+                  "event": {
+                    "kind": "start",
+                    "node": "A",
+                    "t": 0.005,
+                    "gt_dist": 0.0
+                  }
+                }
+              },
+              {
+                "seq": 6,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "simulation.resumed",
+                "world_s": 0.005,
+                "fw_seq": 1,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {}
+              },
+              {
+                "seq": 7,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "serial.rx",
+                "world_s": 0.005,
+                "fw_seq": 1,
+                "severity": "info",
+                "source": "firmware_uart",
+                "details": {
+                  "text": "resume",
+                  "serial_seq": 2,
+                  "command": null
+                }
+              },
+              {
+                "seq": 8,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "serial.command_queued",
+                "world_s": 0.09,
+                "fw_seq": 18,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {
+                  "command": "ping"
+                }
+              },
+              {
+                "seq": 9,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "serial.rx",
+                "world_s": 0.115,
+                "fw_seq": 23,
+                "severity": "info",
+                "source": "firmware_uart",
+                "details": {
+                  "text": "pong",
+                  "serial_seq": 3,
+                  "command": "ping"
+                }
+              },
+              {
+                "seq": 10,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "serial.command_queued",
+                "world_s": 0.215,
+                "fw_seq": 43,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {
+                  "command": "stat"
+                }
+              },
+              {
+                "seq": 11,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "serial.rx",
+                "world_s": 0.24,
+                "fw_seq": 48,
+                "severity": "info",
+                "source": "firmware_uart",
+                "details": {
+                  "text": "T 47 0 0 11096 0 0 0",
+                  "serial_seq": 4,
+                  "command": "stat"
+                }
+              },
+              {
+                "seq": 12,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "mission.phase_segment",
+                "world_s": 0.3,
+                "fw_seq": 61,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {
+                  "phase": "run",
+                  "segment": "AB",
+                  "seg_i": 0,
+                  "lap": 1
+                }
+              },
+              {
+                "seq": 13,
+                "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+                "kind": "simulation.paused",
+                "world_s": 0.335,
+                "fw_seq": 67,
+                "severity": "info",
+                "source": "sim_monitor",
+                "details": {}
+              }
+            ],
+            "last_seq": 13,
+            "first_seq": 1,
+            "dropped_events": 0,
+            "heartbeat_gaps": 0,
+            "saved_snapshot": null,
+            "host": {
+              "couplings": 67,
+              "step_last_ms": 19.86380002927035,
+              "step_mean_ms": 29.86158357947064,
+              "step_p95_ms": 65.9999999916181,
+              "compute_rtf": 0.16743921120906072,
+              "scope": "Active coupling computation only; excludes pause, viewer pacing and state serialization. World driving speed uses simulation time.",
+              "diagnostic_read_ms": 0.031299889087677
+            },
+            "estimates": {
+              "available": true,
+              "source": "firmware_symbols",
+              "fw_seq": 67,
+              "artifact": {
+                "artifact": "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf",
+                "sha256": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95"
+              },
+              "control_time_s": 0.33499982953071594,
+              "pitch_deg": 2.907402141687685,
+              "heading_rad": 0.0,
+              "odometry_m": [
+                0.6000000238418579,
+                1.0
+              ],
+              "yaw_rate_rad_s": 0.0,
+              "yaw_target_rad_s": 0.0,
+              "yaw_integral_nm": 0.0,
+              "differential_torque_nm": 0.0,
+              "position_error_m": 3.749938332475722e-05,
+              "stop_speed_estimate_mps": 0.0,
+              "line_lost_s": 0.33499982953071594
+            },
+            "serial": {
+              "enabled": true,
+              "rx_pending_bytes": 0,
+              "pending_command": null,
+              "tx_total_bytes": 101,
+              "latest_telemetry": "T 60 -2 -2 11096 0 0 0",
+              "events": [
+                {
+                  "seq": 1,
+                  "text": "UP"
+                },
+                {
+                  "seq": 2,
+                  "text": "resume"
+                },
+                {
+                  "seq": 3,
+                  "text": "pong",
+                  "command": "ping"
+                },
+                {
+                  "seq": 4,
+                  "text": "T 47 0 0 11096 0 0 0",
+                  "command": "stat"
+                }
+              ],
+              "last_seq": 4,
+              "gdb_port": null
+            }
+          },
+          "rec": {
+            "n": 68,
+            "live": true
+          }
+        }
+      ]
+    },
+    "ping": {
+      "exit_code": 0,
+      "stderr": "",
+      "frames": [
+        {
+          "seq": 9,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "serial.rx",
+          "world_s": 0.115,
+          "fw_seq": 23,
+          "severity": "info",
+          "source": "firmware_uart",
+          "details": {
+            "text": "pong",
+            "serial_seq": 3,
+            "command": "ping"
+          }
+        }
+      ]
+    },
+    "run": {
+      "exit_code": 0,
+      "stderr": "",
+      "frames": [
+        {
+          "paused": false,
+          "world_s": 0.005,
+          "fw_seq": 1
+        }
+      ]
+    },
+    "stat": {
+      "exit_code": 0,
+      "stderr": "",
+      "frames": [
+        {
+          "seq": 11,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "serial.rx",
+          "world_s": 0.24,
+          "fw_seq": 48,
+          "severity": "info",
+          "source": "firmware_uart",
+          "details": {
+            "text": "T 47 0 0 11096 0 0 0",
+            "serial_seq": 4,
+            "command": "stat"
+          }
+        }
+      ]
+    },
+    "pause": {
+      "exit_code": 0,
+      "stderr": "",
+      "frames": [
+        {
+          "paused": true,
+          "world_s": 0.335,
+          "fw_seq": 67
+        }
+      ]
+    },
+    "snapshot": {
+      "exit_code": 0,
+      "stderr": "",
+      "frames": [
+        {
+          "seq": 14,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "snapshot.saved",
+          "world_s": 0.335,
+          "fw_seq": 67,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {
+            "path": "D:\\Digital Twin\\build123d\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json"
+          }
+        }
+      ]
+    },
+    "events": {
+      "exit_code": 0,
+      "stderr": "",
+      "frames": [
+        {
+          "seq": 1,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "simulation.reset",
+          "world_s": 0.0,
+          "fw_seq": 0,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {
+            "task": 2,
+            "backend": "fw-periph[race_fw.elf]"
+          }
+        },
+        {
+          "seq": 2,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "simulation.paused",
+          "world_s": 0.0,
+          "fw_seq": 0,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {}
+        },
+        {
+          "seq": 3,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "serial.rx",
+          "world_s": 0.0,
+          "fw_seq": 0,
+          "severity": "info",
+          "source": "firmware_uart",
+          "details": {
+            "text": "UP",
+            "serial_seq": 1,
+            "command": null
+          }
+        },
+        {
+          "seq": 4,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "mission.phase_segment",
+          "world_s": 0.0,
+          "fw_seq": 1,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {
+            "phase": "arm",
+            "segment": "AB",
+            "seg_i": 0,
+            "lap": 1
+          }
+        },
+        {
+          "seq": 5,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "mission.start",
+          "world_s": 0.0,
+          "fw_seq": 1,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {
+            "event": {
+              "kind": "start",
+              "node": "A",
+              "t": 0.005,
+              "gt_dist": 0.0
+            }
+          }
+        },
+        {
+          "seq": 6,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "simulation.resumed",
+          "world_s": 0.005,
+          "fw_seq": 1,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {}
+        },
+        {
+          "seq": 7,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "serial.rx",
+          "world_s": 0.005,
+          "fw_seq": 1,
+          "severity": "info",
+          "source": "firmware_uart",
+          "details": {
+            "text": "resume",
+            "serial_seq": 2,
+            "command": null
+          }
+        },
+        {
+          "seq": 8,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "serial.command_queued",
+          "world_s": 0.09,
+          "fw_seq": 18,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {
+            "command": "ping"
+          }
+        },
+        {
+          "seq": 9,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "serial.rx",
+          "world_s": 0.115,
+          "fw_seq": 23,
+          "severity": "info",
+          "source": "firmware_uart",
+          "details": {
+            "text": "pong",
+            "serial_seq": 3,
+            "command": "ping"
+          }
+        },
+        {
+          "seq": 10,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "serial.command_queued",
+          "world_s": 0.215,
+          "fw_seq": 43,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {
+            "command": "stat"
+          }
+        },
+        {
+          "seq": 11,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "serial.rx",
+          "world_s": 0.24,
+          "fw_seq": 48,
+          "severity": "info",
+          "source": "firmware_uart",
+          "details": {
+            "text": "T 47 0 0 11096 0 0 0",
+            "serial_seq": 4,
+            "command": "stat"
+          }
+        },
+        {
+          "seq": 12,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "mission.phase_segment",
+          "world_s": 0.3,
+          "fw_seq": 61,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {
+            "phase": "run",
+            "segment": "AB",
+            "seg_i": 0,
+            "lap": 1
+          }
+        },
+        {
+          "seq": 13,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "simulation.paused",
+          "world_s": 0.335,
+          "fw_seq": 67,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {}
+        },
+        {
+          "seq": 14,
+          "run_id": "0f409c653c8d4361ab5d7e69704a1b80",
+          "kind": "snapshot.saved",
+          "world_s": 0.335,
+          "fw_seq": 67,
+          "severity": "info",
+          "source": "sim_monitor",
+          "details": {
+            "path": "D:\\Digital Twin\\build123d\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json"
+          }
+        }
+      ]
+    },
+    "verified": {
+      "world_s": 0.335,
+      "heartbeat": 67,
+      "couplings": 67,
+      "heartbeat_gaps": 0,
+      "snapshot_path": "D:\\Digital Twin\\build123d\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json",
+      "snapshot_sha256": "a45f96d637d4751a2b86d92b3315b322d6a5cbd3d6e71f0c041be63c7554ee70",
+      "scope": "Short SIM integration: actual firmware, UART and terminal client; no complete mission or physical proof."
+    }
+  },
+  "web_build": {
+    "command": "cd web && npm run build",
+    "result": "PASS",
+    "log_path": "output/speed-tuning-20261001/backend-web-build.log",
+    "log_sha256": "be19b18b4d3c0333bbda144c4e9e383a0b7e26496f51eb1a19ab471a7ce05198",
+    "note": "Existing Vite bundle-size advisory remains."
+  },
+  "prior_evidence": {
+    "path": "firmware/evidence/speed-tuning-20261001.json",
+    "note": "Prior driving measurements/source hashes are preserved. Its diagnostic-panel screenshots describe the earlier UI, which is now removed."
+  },
+  "raw_evidence_sha256": {
+    "output/speed-tuning-20261001/backend-monitoring-gates.log": "85dc79e6be94537e64f1af43595e61950f5d825cc3683bd7f43de2a592374ae3",
+    "output/speed-tuning-20261001/production-backend-monitoring-gates.json": "5cc715e1d3a7cc666bc73c6aae957162e462aa860ac0fcae3954fa54f7bd64de",
+    "output/speed-tuning-20261001/backend-cli-renode.json": "d97e635dc3c02741f8f40dea31b6169a44932249840a7fa03ef13a58f4adac15",
+    "output/speed-tuning-20261001/backend-cli-renode-events.jsonl": "d67c46fe03899df53daa19e2c9b9ee73e8ecdf5442a2a9a69b8c68e1920ab3e0",
+    "output/speed-tuning-20261001/backend-cli-renode-server.log": "706d4298635a3e0d4c2c09b09d6cfefe2c445c0da062fc8ce45aa794430cff1a"
+  },
+  "temporary_services": "Owned test servers terminated after checks. Existing user services untouched.",
+  "cleanup": {
+    "removed_mib": 75.41,
+    "removed_files": 2187,
+    "removed_python_cache_dirs": 11,
+    "retained_raw_evidence": [
+      "output/speed-tuning-20261001/backend-cli-renode-events.jsonl",
+      "output/speed-tuning-20261001/backend-cli-renode-server.log",
+      "output/speed-tuning-20261001/backend-cli-renode.json",
+      "output/speed-tuning-20261001/backend-monitoring-gates.log",
+      "output/speed-tuning-20261001/production-backend-monitoring-gates.json"
+    ],
+    "retained_speed_traces": [
+      "output/speed-tuning-20261001/baseline-renode-task4-trace.json",
+      "output/speed-tuning-20261001/tuned-renode-combined-trace.json"
+    ],
+    "retained_debug_snapshot": "output/race-debug/race-debug-0f409c65-1790919698715502200.json",
+    "services": "Temporary test services stopped; no tracked service or UI process remains."
+  }
+}
