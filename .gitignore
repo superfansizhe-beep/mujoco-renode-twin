@@ -35,3 +35,4 @@ assets/vendor/*
 !assets/vendor/jgb37-520
 assets/vendor/jgb37-520/*
 !assets/vendor/jgb37-520/README.md
+.DS_Store

@@ -1,8 +1,8 @@
 # 答辩速查卡 — 两轮平衡赛车数字孪生
 
-> 仓库：`github.com/rim5432/mujoco-renode-twin` @ `5582e17`（MIT）
-> 本机工作区：`~/jupyter_workspace/学习/mujoco-renode-twin/`（已 git 化，5 次提交）
-> 核实日期：2026-10-09　　实测环境：macOS arm64 / Python 3.14 / MuJoCo
+> 仓库：`github.com/rim5432/mujoco-renode-twin`（MIT）
+> 本项目自包含：物理、控制器、固件、查看器全在一个仓库内，无外部依赖
+> 实测环境：macOS arm64 / Python 3.14 / MuJoCo
 
 ---
 
@@ -127,10 +127,19 @@ Python 参数（唯一数据源）
 ## 可能被问到的挑战问题 → 建议答法
 
 **Q：仿真参数和实物对不上怎么办？**
-A：这是数字孪生的核心难点，项目里预留了 30 项「仿真↔实物」映射表的设计
-（断电测量 / 上电电气 / 闭环标定三个阶段，每项标注测量方法、代码位置、验证命令）。
-**诚实说明**：这张映射表随 10-06 的临时工作区丢失尚未重建，但它体现了方法论——
-孪生的可信度不来自"仿真多真实"，而来自"每一项参数都能追溯到实测"。
+A：这是数字孪生的核心难点。项目的立场是：**孪生的可信度不来自"仿真多真实"，
+而来自"每一项参数都能追溯到来源"**。
+
+代码里每个关键常量都带 provenance 标签（`bot/mass_properties.py` 共 21 处标注）：
+- `CITE`（8 处）= 有公开来源可查（零售参数、datasheet）
+- `CALC`（7 处）= 由 CAD 体积 × 密度算出
+- `WEIGH`（3 处）= 待上秤实测（明确标出哪些还欠实测）
+- `GUESS`（3 处）= 占位，明确标注是猜的
+
+配套的设计是 **fwconfig 参数单一数据源 + `--check` 门**：Python 参数生成 C 头文件，
+`--check` 会在两边失配时 exit 1（`uv run python -m race.fwconfig --check` 实测 exit 0 = 同步）。
+所以"仿真和固件用同一套参数"这件事有机器保证，不靠人记得同步。
+真正需要对接实物时，改的是 constants sheet 里的数，而不是改代码。
 
 **Q：为什么不用 Gym/PyTorch 学控制？**
 A：目标是控制**已有的 C 固件**，不是训新策略。PID/LQR 参数必须在真实固件代码里生效，
@@ -145,10 +154,11 @@ A：评分器（grader）拿的是 MuJoCo 状态真值，而控制器只能看�
 ## 答辩前一分钟检查清单
 
 ```bash
-cd ~/jupyter_workspace/学习/mujoco-renode-twin
-bash tools/fetch_vendor.sh          # 幂等，已拉过会 skip
-uv run python -m race --all         # 确认四任务仍全绿
+git clone https://github.com/rim5432/mujoco-renode-twin.git && cd mujoco-renode-twin
+uv sync
+bash tools/fetch_vendor.sh          # 拉 vendor STEP（幂等，已拉过会 skip）
+uv run python -m race --all         # 确认四任务全绿
 bash tools/demo.sh                  # 起 3D 演示
 ```
-然后用 **Chrome** 打开 `http://localhost:5173/?ws=ws://127.0.0.1:8766`，
-**不要**用 Codex 内置浏览器。
+然后用 **Chrome** 打开 `http://localhost:5173/?ws=ws://127.0.0.1:8766`。
+浏览器地址栏能连上 `127.0.0.1:8766` 是前提；某些受限沙箱浏览器连不上会一直显示 offline。
