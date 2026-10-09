@@ -69,6 +69,11 @@ VENDOR_READY = all(os.path.exists(p) for p in
                     os.path.normpath(_GY521_STEP)))
 requires_vendor = pytest.mark.skipif(
     not VENDOR_READY, reason="vendor STEPs not fetched (assets/vendor/README.md)")
+# mode="visual" additionally needs the GrabCAD LR24 motor, which requires a
+# logged-in session (tools/fetch_vendor.sh cannot get it).
+requires_visual_vendor = pytest.mark.skipif(
+    not VENDOR_READY or not os.path.exists(MOTOR_STEP_PATH),
+    reason="full visual vendor set not fetched (GrabCAD LR24 needs a login)")
 
 
 # ---------------- interface: settled facts ----------------
@@ -326,7 +331,9 @@ def test_wheels_sit_outboard_of_the_flange():
         bb = _placed(sy < 0, build_wheel_envelope()).bounding_box()
         inner = bb.min.X if sy > 0 else bb.max.X
         assert abs(abs(inner) - (FLANGE_X + WHEEL_SEAT_X)) < 1e-6
-        assert (bb.max.X - bb.min.X) == WHEEL_W
+        # tolerance, not ==: bbox arithmetic on a rotated+mirrored placement
+        # lands on 25.000000000000004, which is the same width.
+        assert abs((bb.max.X - bb.min.X) - WHEEL_W) < 1e-9
 
 
 # ---------------- vendor file gates ----------------
@@ -382,6 +389,9 @@ def test_vendor_gy521_step_still_fits():
 
 
 # ---------------- electronics ----------------
+# mode="visual" needs the full vendor set, incl. the GrabCAD LR24 motor that
+# needs a logged-in session -- stricter than requires_vendor above.
+@requires_visual_vendor
 def test_visual_assembly_swaps_imu_for_vendor_board():
     children = {c.label: c for c in build_assembly(mode="visual").children}
     assert len(children) == 22, "the IMU swap must stay 1:1"
@@ -521,6 +531,7 @@ def test_lowered_structure_and_estimated_center_of_gravity():
     assert abs(mp.imu_site_pos()[2] - (IMU_BOTTOM_Z + 1.25) / 1000) < 1e-9
 
 
+@requires_visual_vendor
 def test_visual_assembly_has_no_solid_interference():
     children = build_assembly("visual").children
     bad = []
