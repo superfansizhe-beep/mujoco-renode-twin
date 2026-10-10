@@ -1,6 +1,7 @@
 """Observability must preserve the coupling and fail closed on stale C state."""
 import json
 import asyncio
+import os
 from pathlib import Path
 import socket
 import subprocess

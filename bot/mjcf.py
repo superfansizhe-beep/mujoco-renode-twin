@@ -23,6 +23,7 @@ Approximations, deliberate and documented (see README twin section):
   line lives in bot.motors (tested Python), not in the XML.
 """
 import math
+import os
 
 import mujoco
 

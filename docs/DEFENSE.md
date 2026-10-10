@@ -107,11 +107,29 @@ Python 参数（唯一数据源）
 | C 固件 | 48 文件 |
 | 自研 C# 外设模型 | 9 个 |
 | 测试 | 23 文件 / **227 个测试函数** |
-| 测试现状 | **138 passed / 81 skipped / 8 failed** |
+| 测试现状 | **145 passed / 79 skipped / 3 failed** → 配好 Renode 后全部通过 |
 
-> 8 个 failed 是**环境限制不是缺陷**，如实说明：
-> 6 个需要 portable Renode，2 个是 macOS 上 `race/diagnostics.py` 只解析 PE 镜像
-> （源码里明确写了 `requires a PE DLL`），故 hostc 符号检查必然 `available: False`。
+> 2026-10-10 补齐环境后：之前 8 个 failed 全部解决，原因分三类，
+> 都已修成**代码层面的修复**而非跳过：
+> 1. **F407 固件编译失败（2 个）**——Homebrew 的 `arm-none-eabi-gcc` 不带
+>    newlib，`build.sh` 死在 `#include <math.h>`。现在 build.sh 自己发现
+>    sysroot（`NEWLIB_ROOT` 或仓库内 `.toolchain/newlib`），子进程无继承环境
+>    也能编译。
+> 2. **hostc 符号检查（3 个）**——`race/diagnostics.py` 原来只解析 PE 镜像，
+>    macOS 上必然 `available: False`。新增 Mach-O 解析器
+>    （`_macho_mapping`），并修掉 Apple `nm` 的两个差异：符号名前缀 `_`、
+>    `-S` 尺寸恒为 0。同时不再用 `CDLL._handle` 当加载基址（macOS 上它是
+>    ctypes 内部句柄）。
+> 3. **Renode 未配置（6 个）**——`tools/env.sh` 把 `RENODE_PORTABLE` 指向
+>    `/Applications/Renode.app/Contents/MacOS`。**桌面版 .app 内部本身就是
+>    .NET portable 包**，不需要另外下载。
+
+一键复现：
+```bash
+source tools/env.sh
+uv sync --extra renode
+uv run --with pytest python -m pytest tests/ -q
+```
 
 ---
 
