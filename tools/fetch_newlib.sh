@@ -7,9 +7,11 @@
 # Idempotent: skips whatever is already unpacked.
 set -euo pipefail
 
-NEWLIB_ROOT="${NEWLIB_ROOT:-/tmp/newlib}"
+# Unpack into the repo (.toolchain/newlib) so it survives a cleaned TMPDIR.
+NEWLIB_ROOT="${NEWLIB_ROOT:-$(cd "$(dirname "$0")/.." && pwd)/.toolchain/newlib}"
 VER="4.5.0.20241231-1"
 BASE="https://mirrors.aliyun.com/debian/pool/main/n/newlib"
+mkdir -p "$NEWLIB_ROOT"
 cd "$NEWLIB_ROOT"
 
 need=0
@@ -51,4 +53,4 @@ for ver in ("4.5.0.20241231-1",):
     extract(f"libnewlib-arm-none-eabi_{ver}_all.deb", os.path.join(root, "runtime"))
 PY
 
-echo "ok. next:  source tools/f407_env.sh && bash firmware/twin/build.sh"
+echo "ok. next:  source tools/env.sh && bash firmware/twin/build.sh"

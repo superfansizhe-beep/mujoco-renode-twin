@@ -40,3 +40,4 @@ assets/vendor/jgb37-520/*
 ~$*.pptx
 ~$*.docx
 ~$*.xlsx
+.toolchain/
