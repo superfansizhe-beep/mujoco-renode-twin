@@ -38,4 +38,4 @@ if [ -n "${RENODE_PORTABLE:-}" ]; then
   export PYRENODE_PATH="${PYRENODE_PATH:-$RENODE_PORTABLE}"
 fi
 
-echo "env.sh: newlib=${NEWLIB_ROOT:+ready}${NEWLIB_ROOT:-missing} renode=${RENODE_PORTABLE:-unset}"
+echo "env.sh: newlib=${NEWLIB_ROOT:+ready}${NEWLIB_ROOT:-missing} renode=${RENODE_PORTABLE:-unset} gdb=$(command -v arm-none-eabi-gdb || echo missing)"
