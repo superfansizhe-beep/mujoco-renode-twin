@@ -480,16 +480,14 @@ def test_server_streams_and_takes_commands():
     scene = {"type": "scene", "app": "twin", "title": "Balance Twin"}
 
     async def scenario():
+        # port=0 lets the OS pick; wait_ready() reports the real port instead
+        # of probing for a free one first, which races under a parallel run.
         server = BotServer(port=0, scene=scene)
-        # port=0 -> OS-pick; but we host manually: pick a free one instead
-        import socket
-        with socket.socket() as s:
-            s.bind(("127.0.0.1", 0))
-            server.port = s.getsockname()[1]
         server.start()
         try:
+            port = await server.wait_ready()
             async with websockets.connect(
-                    f"ws://127.0.0.1:{server.port}") as ws:
+                    f"ws://127.0.0.1:{port}") as ws:
                 # the connection's FIRST message is the scene frame --
                 # the app declaring itself before any state flows
                 frame = json.loads(await asyncio.wait_for(ws.recv(), 5))

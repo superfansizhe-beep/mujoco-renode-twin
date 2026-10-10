@@ -54,6 +54,7 @@ class BotServer:
         self._thread: threading.Thread | None = None
         self._loop: asyncio.AbstractEventLoop | None = None
         self._stop = asyncio.Event()
+        self._ready = asyncio.Event()
         self.client_count = 0
 
     # ---- called from the bot loop thread ----
@@ -130,12 +131,25 @@ class BotServer:
                         clients.discard(ws)
 
         try:
-            async with serve(handler, self.host, self.port, max_size=1 << 16):
+            async with serve(handler, self.host, self.port, max_size=1 << 16) as srv:
+                # With port=0 the OS picks the number; publish it so callers
+                # (tests, tools) can connect without probing-then-binding,
+                # which races when several servers start at once.
+                for sock in getattr(srv, "sockets", None) or ():
+                    self.port = sock.getsockname()[1]
+                    break
+                self._ready.set()
                 await asyncio.ensure_future(broadcaster())
                 await self._stop.wait()
         except OSError as exc:
+            self._ready.set()
             print(f"[bot-server] cannot listen on {self.host}:{self.port}: "
                   f"{exc}")
+
+    async def wait_ready(self, timeout: float = 5.0) -> int:
+        """Block until the socket is listening; returns the bound port."""
+        await asyncio.wait_for(self._ready.wait(), timeout)
+        return self.port
 
     def _latest_state(self) -> dict | None:
         latest = None
