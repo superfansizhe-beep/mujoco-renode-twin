@@ -17,7 +17,7 @@ function createSlide(pres, theme) {
     ["12,844", "Python 行数", "80 个文件"],
     ["48", "C 固件文件", "交叉编译至 F407"],
     ["9", "自研 C# 外设模型", "Renode 侧"],
-    ["236", "个测试用例", "23 个测试文件"]
+    ["227", "个测试用例", "23 个测试文件"]
   ];
   stats.forEach((s, i) => {
     const col = i % 2, row = Math.floor(i / 2);
@@ -49,7 +49,7 @@ function createSlide(pres, theme) {
   });
 
   const bars = [
-    ["通过 passed", 227, 3.46],
+    ["通过 passed", 218, 3.46],
     ["跳过 skipped", 9, 0.14],
     ["失败 failed", 0, 0.02]
   ];
@@ -76,11 +76,11 @@ function createSlide(pres, theme) {
   slide.addShape(pres.shapes.LINE, {
     x: 5.6, y: 3.85, w: 3.65, h: 0, line: { color: theme.secondary, width: 0.75 }
   });
-  slide.addText("零失败 · 227 项通过", {
+  slide.addText("零失败 · 218 项通过", {
     x: 5.6, y: 3.93, w: 3.7, h: 0.26, margin: 0,
     fontSize: 12, color: theme.accent, bold: true, fontFace: "Microsoft YaHei"
   });
-  slide.addText("pytest 收集 236 例(含 subtests 展开); 9 项跳过为可选外部依赖(GrabCAD 登录下载等)", {
+  slide.addText("pytest 收集 227 例(另含 45 个 subtests); 9 项跳过为可选外部依赖(GrabCAD 登录下载等)", {
     x: 5.6, y: 4.18, w: 3.7, h: 0.42, margin: 0,
     fontSize: 8.5, color: theme.light, fontFace: "Microsoft YaHei"
   });
