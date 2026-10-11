@@ -49,8 +49,8 @@ function createSlide(pres, theme) {
   });
 
   const bars = [
-    ["通过 passed", 218, 3.46],
-    ["跳过 skipped", 9, 0.14],
+    ["通过 passed", 221, 3.50],
+    ["跳过 skipped", 6, 0.095],
     ["失败 failed", 0, 0.02]
   ];
   bars.forEach((b, i) => {
@@ -76,11 +76,11 @@ function createSlide(pres, theme) {
   slide.addShape(pres.shapes.LINE, {
     x: 5.6, y: 3.85, w: 3.65, h: 0, line: { color: theme.secondary, width: 0.75 }
   });
-  slide.addText("零失败 · 218 项通过", {
+  slide.addText("零失败 · 221 项通过", {
     x: 5.6, y: 3.93, w: 3.7, h: 0.26, margin: 0,
     fontSize: 12, color: theme.accent, bold: true, fontFace: "Microsoft YaHei"
   });
-  slide.addText("pytest 收集 227 例(另含 45 个 subtests); 9 项跳过为可选外部依赖(GrabCAD 登录下载等)", {
+  slide.addText("pytest 收集 227 例(另含 45 个 subtests); 6 项跳过为可选外部依赖(GrabCAD 电机模型, 需登录下载)", {
     x: 5.6, y: 4.18, w: 3.7, h: 0.42, margin: 0,
     fontSize: 8.5, color: theme.light, fontFace: "Microsoft YaHei"
   });
