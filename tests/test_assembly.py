@@ -61,19 +61,42 @@ MOTOR_STEP_PATH = os.path.normpath(MOTOR_STEP)
 BRACKET_STEP_PATH = os.path.normpath(_VENDOR_STEP)
 
 # The vendor STEPs are fetched, not redistributed (assets/vendor/README.md);
-# every geometry gate below runs on OUR envelopes either way.
+# every geometry gate below runs on OUR envelopes either way. Each gate declares
+# ONLY the models it actually touches, so a missing file skips the tests that need
+# it instead of every gate at once.
 import pytest
 
-VENDOR_READY = all(os.path.exists(p) for p in
-                   (MOTOR_STEP_PATH, BRACKET_STEP_PATH,
-                    os.path.normpath(_GY521_STEP)))
-requires_vendor = pytest.mark.skipif(
-    not VENDOR_READY, reason="vendor STEPs not fetched (assets/vendor/README.md)")
-# mode="visual" additionally needs the GrabCAD LR24 motor, which requires a
-# logged-in session (tools/fetch_vendor.sh cannot get it).
-requires_visual_vendor = pytest.mark.skipif(
-    not VENDOR_READY or not os.path.exists(MOTOR_STEP_PATH),
-    reason="full visual vendor set not fetched (GrabCAD LR24 needs a login)")
+HAS_MOTOR = os.path.exists(MOTOR_STEP_PATH)
+HAS_BRACKET = os.path.exists(BRACKET_STEP_PATH)
+HAS_GY521 = os.path.exists(os.path.normpath(_GY521_STEP))
+VENDOR_READY = HAS_MOTOR and HAS_BRACKET and HAS_GY521
+
+_WHERE = "see assets/vendor/README.md"
+_ABSENT = {
+    "motor": f"GrabCAD LR24 motor STEP absent ({_WHERE})",
+    "bracket": f"37 mm mounting bracket STEP absent ({_WHERE})",
+    "gy521": f"GY-521 STEP absent ({_WHERE})",
+}
+
+
+def _gate(*keys):
+    """skipif over an explicit list of needed models."""
+    return pytest.mark.skipif(
+        not all({"motor": HAS_MOTOR, "bracket": HAS_BRACKET,
+                 "gy521": HAS_GY521}[k] for k in keys),
+        reason="; ".join(_ABSENT[k] for k in keys
+                         if not {"motor": HAS_MOTOR, "bracket": HAS_BRACKET,
+                                 "gy521": HAS_GY521}[k]) or "vendor STEPs not fetched",
+    )
+
+
+requires_motor = _gate("motor")
+requires_bracket = _gate("bracket")
+requires_gy521 = _gate("gy521")
+requires_motor_bracket = _gate("motor", "bracket")
+# mode="visual" swaps every envelope for the real model, so it needs the full set.
+requires_visual_vendor = _gate("motor", "bracket", "gy521")
+requires_vendor = requires_visual_vendor  # legacy alias: the all-three gate
 
 
 # ---------------- interface: settled facts ----------------
@@ -197,7 +220,7 @@ def test_grid_holes_are_real_holes():
         "material between grid knots is missing -- cuts merged")
 
 
-@requires_vendor
+@requires_bracket
 def test_bracket_bolts_align_bracket_and_disc():
     """Disc holes (our constants) vs bracket holes (vendor STEP, re-based):
     a bolt-axis probe must pass through BOTH without hitting material."""
@@ -337,7 +360,7 @@ def test_wheels_sit_outboard_of_the_flange():
 
 
 # ---------------- vendor file gates ----------------
-@requires_vendor
+@requires_motor
 def test_vendor_motor_step_is_still_LR24():
     assert os.path.exists(MOTOR_STEP_PATH), f"missing: {MOTOR_STEP_PATH}"
     part = load_motor_visual()
@@ -364,7 +387,7 @@ def test_vendor_motor_step_is_still_LR24():
         "the vendor file is not the variant we settled the interface on")
 
 
-@requires_vendor
+@requires_bracket
 def test_vendor_bracket_step_still_fits():
     assert os.path.exists(BRACKET_STEP_PATH), f"missing: {BRACKET_STEP_PATH}"
     part = load_bracket_visual()
@@ -375,7 +398,7 @@ def test_vendor_bracket_step_still_fits():
         f"bracket axle offset moved: base top {bb.max.Z:.1f} vs {AXLE_OFFSET}")
 
 
-@requires_vendor
+@requires_gy521
 def test_vendor_gy521_step_still_fits():
     from cad_modeling.sensors import _GY521_STEP, load_gy521_visual
     path = os.path.normpath(_GY521_STEP)
@@ -390,7 +413,7 @@ def test_vendor_gy521_step_still_fits():
 
 # ---------------- electronics ----------------
 # mode="visual" needs the full vendor set, incl. the GrabCAD LR24 motor that
-# needs a logged-in session -- stricter than requires_vendor above.
+# needs a logged-in session -- stricter than the single-model gates above.
 @requires_visual_vendor
 def test_visual_assembly_swaps_imu_for_vendor_board():
     children = {c.label: c for c in build_assembly(mode="visual").children}
@@ -428,7 +451,7 @@ def test_recesses_remove_wheel_and_bracket_material_only():
         assert _intersect_volume(lower, supported) > 10
 
 
-@requires_vendor
+@requires_motor
 def test_vendor_shafts_are_coaxial_with_both_wheel_bores():
     """Measure actual D6 cylindrical axes, independent of bounding boxes."""
     for left in (False, True):
@@ -444,7 +467,7 @@ def test_vendor_shafts_are_coaxial_with_both_wheel_bores():
         assert _intersect_volume(motor, wheel) < 0.01
 
 
-@requires_vendor
+@requires_motor_bracket
 def test_motor_flange_holes_have_matching_bracket_support():
     """Each screw axis is open AND its head has surrounding plate material."""
     for left in (False, True):
@@ -465,7 +488,7 @@ def test_motor_flange_holes_have_matching_bracket_support():
             assert _intersect_volume(bracket, bearing) > 20
 
 
-@requires_vendor
+@requires_visual_vendor
 def test_mpu6050_mount_matches_real_board_and_disc_holes():
     children = {c.label: c for c in build_assembly("visual").children}
     imu, mount, disc = children["imu"], children["imu_mount"], children["deck_lower"]

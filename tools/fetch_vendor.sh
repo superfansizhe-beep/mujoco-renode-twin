@@ -7,8 +7,9 @@
 #
 #   bash tools/fetch_vendor.sh
 #
-# GrabCAD items need a logged-in session and are NOT fetched here; they are
-# visual cross-check references only. See assets/vendor/README.md.
+# GrabCAD items need a logged-in session and are NOT fetched here; the motor is a
+# manual download (assets/vendor/README.md has the step-by-step):
+#   https://www.grabcad.com/library/motor-jgb37-520-with-quadrature-encoder-1
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
