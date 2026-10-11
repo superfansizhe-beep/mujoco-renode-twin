@@ -50,17 +50,21 @@ bash tools/demo.sh     # 一条命令拉起全部
 > 127.0.0.1:8766，会一直显示 offline——那是沙箱限制，不是项目问题
 > （已用独立 Chromium 验证：零 console error，全链路通）。
 
-### 3. 固件在环（可讲，不一定能现场跑）
+### 3. 固件在环（已实测通过）
 
 ```bash
-source tools/f407_env.sh
+source tools/env.sh
 bash firmware/twin/build.sh && bash firmware/race/build.sh   # 已验证：71880 / 151936 字节
-uv run python -m race --task 2 --backend renode              # 需 portable Renode
+uv run python -m race --task 2 --backend renode              # 真机 Renode 跑固件
 ```
 
-本机 `/Applications/Renode.app` 是**桌面版**，pyrenode3 要的是 portable
-.NET 包，所以固件在环目前是 skip 状态。**答辩时如实说"代码路径已通，
-本机缺 portable Renode"即可**，别硬说跑过了。
+`tools/env.sh` 把 `RENODE_PORTABLE` 指向 `/Applications/Renode.app/Contents/MacOS`。
+**别再说"本机缺 portable Renode"——那是个错误结论**：桌面版 `.app` 内部
+本身就是 .NET portable 包，pyrenode3 直接能跑，固件在环的测试门现在是**通过**
+状态（`tests/test_race_firmware.py`）。
+
+> 现场演示提醒：Renode 冷启动要几十秒，答辩前先把这条命令跑一遍热好，
+> 免得现场卡在启动画面。2 分钟够稳。
 
 ---
 
@@ -141,7 +145,7 @@ uv run --with pytest python -m pytest tests/ -q
 1. **`ops.py` 是 Windows 专用**（netstat/taskkill/powershell）→ Mac 手动起两个终端，或用 `tools/demo.sh`
 2. README 写 Python ≥3.12，`pyproject.toml` 实为 **≥3.14**
 3. vendor STEP 模型**故意不分发**（第三方许可）→ 首次跑必须 `bash tools/fetch_vendor.sh`
-4. Homebrew 的 `arm-none-eabi-gcc` **无 newlib** → `source tools/f407_env.sh`（已封装 Debian newlib）
+4. Homebrew 的 `arm-none-eabi-gcc` **无 newlib** → `bash tools/fetch_newlib.sh` 自动装好，`build.sh` 也会自己发现 `.toolchain/newlib`
 
 ---
 
