@@ -41,8 +41,22 @@ node slides/compile.js
 2. **正文标点用半角**。全角 `,。、;:()""` 在这个 deck 里会渲染成方框。
 3. **页码徽章坐标固定** `x: 9.3, y: 5.1, w: 0.42, h: 0.3`,封面页不加。
 4. 插页之后记得改后面每一页的页码数字,别让两个页码一样。
+5. **图片文件的扩展名必须和内容一致**。踩过的坑:`task2.png` 里装的是 JPEG
+   数据,pptxgenjs 按 `image/png` 写进包,条目 CRC 坏掉,PowerPoint 画一个空框
+   而且不报错。`check_pptx.py` 就是为了抓这个。
 
 ## 怎么自查
+
+```bash
+node slides/compile.js
+python3 check_pptx.py slides/output/mujoco-renode-twin-defense.pptx
+```
+
+`check_pptx.py` 查三件事:zip 完整性、每个 media 条目能不能读、图片的真实格式
+和扩展名是否一致。任何一条不过就别发出去 —— 图片不显示的时候它是唯一会告诉你
+原因的地方。
+
+再顺手看一眼版面:
 
 ```bash
 python3 -c "
