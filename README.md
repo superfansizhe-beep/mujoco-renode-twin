@@ -56,12 +56,16 @@ state frames ─> BotServer (ws :8765/:8766) ─> three.js viewer (30 Hz, interp
 
 ## Quickstart
 
-Python ≥3.12 + [uv](https://docs.astral.sh/uv/); Node 18+ for the viewer;
-`arm-none-eabi-gcc` and a [Renode](https://renode.io) portable install are
-optional (firmware-in-the-loop path only).
+Python ≥3.12 + [uv](https://docs.astral.sh/uv/); Node 18+ for the viewer.
+`arm-none-eabi-gcc` and [Renode](https://renode.io) are only needed for the
+firmware-in-the-loop path.
+
+The twin imports bought-part STEP models, so a fresh clone fetches them once
+before anything else:
 
 ```bash
 uv sync                                   # python deps (mujoco, build123d, ...)
+bash tools/fetch_vendor.sh                # third-party STEPs (fetched, never committed)
 uv run python -m race --task 1            # host-C law, headless, graded
 uv run python -m race --all               # all four exam tasks, verdict table
 ```
@@ -81,25 +85,35 @@ uv run python ops.py start viewer race --task 1
 uv run python ops.py stop all
 ```
 
-The firmware-in-the-loop path (build the ELFs, point at Renode):
+The firmware-in-the-loop path. `tools/env.sh` is the single command that
+wires up everything the suite expects — the ARM sysroot, Renode and GDB:
 
 ```bash
+bash tools/fetch_newlib.sh                # once: Homebrew's gcc ships without newlib
+source tools/env.sh                       # newlib sysroot + RENODE_PORTABLE + gdb
 bash firmware/twin/build.sh && bash firmware/race/build.sh
-set RENODE_PORTABLE=C:\path\to\renode_portable     # your portable Renode root
 uv run python -m race --task 2 --backend renode    # the real peripherals
 ```
+
+On macOS `tools/env.sh` resolves Renode by itself: the desktop `Renode.app`
+bundle's `Contents/MacOS` directory *is* a .NET portable package, so there is
+nothing extra to download. Elsewhere, export `RENODE_PORTABLE` at your
+portable root.
 
 ## Tests
 
 ```bash
+source tools/env.sh                                       # unlocks the gated suites
+uv run --with pytest python -m pytest tests/ -q          # everything, ~14 min
 uv run python -m unittest tests.test_race tests.test_hostc_race tests.test_hostc_balance
-uv run python -m pytest tests/test_twin.py tests/test_assembly.py -q
+uv run python -m pytest tests/test_twin.py tests/test_assembly.py -q   # fast subset
 ```
 
 Renode-gated suites (`tests.test_firmware_*`, `tests.test_race_firmware`,
 `tests.test_line_tracking`) skip without `RENODE_PORTABLE`; budget ~20 min
-when they run — one at a time. CAD geometry gates skip without the vendor
-models (see below).
+when they run — one at a time. Each CAD geometry gate declares only the vendor
+models it actually touches, so a missing STEP skips the tests that need it and
+names the file in the skip reason.
 
 ## Third-party geometry
 
