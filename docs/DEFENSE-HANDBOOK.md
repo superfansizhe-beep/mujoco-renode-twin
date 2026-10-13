@@ -389,7 +389,7 @@ bash tools/demo.sh                  # 再起 3D 浏览器
 
 ```
 # 前置：装 uv、Node 18+、git
-git clone https://github.com/rim5432/mujoco-renode-twin.git
+git clone https://github.com/superfansizhe-beep/mujoco-renode-twin.git
 cd mujoco-renode-twin
 uv sync                              # 装 Python 依赖
 bash tools/fetch_vendor.sh           # 拉 vendor STEP 模型

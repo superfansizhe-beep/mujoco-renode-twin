@@ -58,7 +58,7 @@ function createSlide(pres, theme) {
     fontSize: 10, color: "FFFFFF", fontFace: "Arial"
   });
 
-  slide.addText("github.com/rim5432/mujoco-renode-twin", {
+  slide.addText("github.com/superfansizhe-beep/mujoco-renode-twin", {
     x: 0.6, y: 5.0, w: 6, h: 0.3, margin: 0,
     fontSize: 11, color: theme.light, fontFace: "Arial"
   });

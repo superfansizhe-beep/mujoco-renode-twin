@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const pres = new pptxgen();
 pres.layout = 'LAYOUT_16x9';
-pres.author = 'rim5432';
+pres.author = 'superfansizhe-beep';
 pres.title = 'Two-wheel balancing race car digital twin';
 
 // Tech & Night-inspired, mapped for a light deck.

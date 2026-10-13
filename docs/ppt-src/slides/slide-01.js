@@ -59,7 +59,7 @@ function createSlide(pres, theme) {
   slide.addShape(pres.shapes.LINE, {
     x: 0.6, y: 4.55, w: 5.6, h: 0, line: { color: theme.secondary, width: 0.75 }
   });
-  slide.addText("github.com/rim5432/mujoco-renode-twin   |   MIT License", {
+  slide.addText("github.com/superfansizhe-beep/mujoco-renode-twin   |   MIT License", {
     x: 0.6, y: 4.68, w: 6, h: 0.3, margin: 0,
     fontSize: 11, color: theme.secondary, fontFace: "Arial"
   });

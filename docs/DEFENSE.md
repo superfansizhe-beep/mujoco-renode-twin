@@ -1,6 +1,6 @@
 # 答辩速查卡 — 两轮平衡赛车数字孪生
 
-> 仓库：`github.com/rim5432/mujoco-renode-twin`（MIT）
+> 仓库：`github.com/superfansizhe-beep/mujoco-renode-twin`（MIT）
 > 本项目自包含：物理、控制器、固件、查看器全在一个仓库内，无外部依赖
 > 实测环境：macOS arm64 / Python 3.14 / MuJoCo
 
@@ -179,7 +179,7 @@ A：评分器（grader）拿的是 MuJoCo 状态真值，而控制器只能看�
 ## 答辩前一分钟检查清单
 
 ```bash
-git clone https://github.com/rim5432/mujoco-renode-twin.git && cd mujoco-renode-twin
+git clone https://github.com/superfansizhe-beep/mujoco-renode-twin.git && cd mujoco-renode-twin
 uv sync
 bash tools/fetch_vendor.sh          # 拉 vendor STEP（幂等，已拉过会 skip）
 uv run python -m race --all         # 确认四任务全绿
