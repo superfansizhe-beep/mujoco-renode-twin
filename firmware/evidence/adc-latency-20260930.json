@@ -5,8 +5,8 @@
  "environment": {
   "python": "3.14.7",
   "renode": "1.17.0 portable",
-  "venv": "D:/Digital Twin/build123d/.venv",
-  "worktree": "D:/Digital Twin/build123d (master + this change)"
+  "venv": "<repo>/.venv",
+  "worktree": "<repo> (master + this change)"
  },
  "before": {
   "gap": "conversion completed immediately; sample time / ADCPRE did not determine latency (sim-fidelity-gaps 2026-09-29; adc_model.cs header)"

@@ -11,8 +11,8 @@
       "scipy": "1.18.1"
     },
     "renode": "1.17.0 portable; actual API reflected in probe.log",
-    "venv": "junction to D:/Digital Twin/build123d/.venv",
-    "cad_modeling_editable_source": "D:\\Digital Twin\\build123d\\src\\cad_modeling",
+    "venv": "junction to <repo>/.venv",
+    "cad_modeling_editable_source": "<repo>\\src\\cad_modeling",
     "shared_cad_assets": {
       "files_checked": 40,
       "differences_after_lf_normalization": 0

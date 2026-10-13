@@ -427,7 +427,7 @@
               "source": "firmware_symbols",
               "fw_seq": 67,
               "artifact": {
-                "artifact": "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf",
+                "artifact": "<repo>\\firmware\\race\\race_fw.elf",
                 "sha256": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95"
               },
               "control_time_s": 0.33499982953071594,
@@ -557,7 +557,7 @@
           "severity": "info",
           "source": "sim_monitor",
           "details": {
-            "path": "D:\\Digital Twin\\build123d\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json"
+            "path": "<repo>\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json"
           }
         }
       ]
@@ -745,7 +745,7 @@
           "severity": "info",
           "source": "sim_monitor",
           "details": {
-            "path": "D:\\Digital Twin\\build123d\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json"
+            "path": "<repo>\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json"
           }
         }
       ]
@@ -755,7 +755,7 @@
       "heartbeat": 67,
       "couplings": 67,
       "heartbeat_gaps": 0,
-      "snapshot_path": "D:\\Digital Twin\\build123d\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json",
+      "snapshot_path": "<repo>\\output\\race-debug\\race-debug-0f409c65-1790919698715502200.json",
       "snapshot_sha256": "a45f96d637d4751a2b86d92b3315b322d6a5cbd3d6e71f0c041be63c7554ee70",
       "scope": "Short SIM integration: actual firmware, UART and terminal client; no complete mission or physical proof."
     }

@@ -377,7 +377,7 @@
 
 
 ```
-cd /Users/fansizhe/jupyter_workspace/学习/mujoco-renode-twin
+cd mujoco-renode-twin
 uv run python -m race --all        # 先证明四任务全绿（约2-3分钟）
 bash tools/demo.sh                  # 再起 3D 浏览器
 # 用 Chrome 打开 http://localhost:5173/?ws=ws://127.0.0.1:8766

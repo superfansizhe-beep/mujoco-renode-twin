@@ -140,7 +140,7 @@
     "artifact_sha256": "480054bec309bc96383aaab5c93fd65a7b5e486c7f791ff3965873b775efa411",
     "config_sha256": "4e971fd4596c4e1d3242b823da19bb3e34b9dded0fcfba9b88e70279ed36b2ec",
     "law_sha256": "9f0317a882f3ed860b4b25f34bc316881cb4c3f42fa3eee96f2544b746c50688",
-    "trace": "D:\\Digital Twin\\build123d\\output\\speed-tuning-20261001\\baseline-renode-task4-trace.json"
+    "trace": "<repo>\\output\\speed-tuning-20261001\\baseline-renode-task4-trace.json"
   },
   "production_renode_nominal": {
     "scope": "SIM; real motor current, battery sag, sensor bias and physical-board timing remain unmeasured",
@@ -221,15 +221,15 @@
       }
     },
     "sha256": {
-      "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
-      "D:\\Digital Twin\\build123d\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
-      "D:\\Digital Twin\\build123d\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
-      "D:\\Digital Twin\\build123d\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
-      "D:\\Digital Twin\\build123d\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
-      "D:\\Digital Twin\\build123d\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
-      "D:\\Digital Twin\\build123d\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
-      "D:\\Digital Twin\\build123d\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
-      "D:\\Digital Twin\\build123d\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
+      "<repo>\\firmware\\race\\race_fw.elf": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
+      "<repo>\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
+      "<repo>\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
+      "<repo>\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
+      "<repo>\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
+      "<repo>\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
+      "<repo>\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
+      "<repo>\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
+      "<repo>\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
     }
   },
   "production_renode_stress": {
@@ -311,15 +311,15 @@
       }
     },
     "sha256": {
-      "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
-      "D:\\Digital Twin\\build123d\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
-      "D:\\Digital Twin\\build123d\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
-      "D:\\Digital Twin\\build123d\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
-      "D:\\Digital Twin\\build123d\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
-      "D:\\Digital Twin\\build123d\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
-      "D:\\Digital Twin\\build123d\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
-      "D:\\Digital Twin\\build123d\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
-      "D:\\Digital Twin\\build123d\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
+      "<repo>\\firmware\\race\\race_fw.elf": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
+      "<repo>\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
+      "<repo>\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
+      "<repo>\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
+      "<repo>\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
+      "<repo>\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
+      "<repo>\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
+      "<repo>\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
+      "<repo>\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
     }
   },
   "software_gates": {
@@ -439,15 +439,15 @@
           }
         },
         "sha256": {
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_core.dll": "674c23a90dc6004421ef5300aed8889c5ae667ca907a65134e165cf14ece4688",
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
-          "D:\\Digital Twin\\build123d\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
-          "D:\\Digital Twin\\build123d\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
-          "D:\\Digital Twin\\build123d\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
-          "D:\\Digital Twin\\build123d\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
-          "D:\\Digital Twin\\build123d\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
-          "D:\\Digital Twin\\build123d\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
+          "<repo>\\firmware\\race\\race_core.dll": "674c23a90dc6004421ef5300aed8889c5ae667ca907a65134e165cf14ece4688",
+          "<repo>\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
+          "<repo>\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
+          "<repo>\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
+          "<repo>\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
+          "<repo>\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
+          "<repo>\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
+          "<repo>\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
+          "<repo>\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
         }
       }
     }
@@ -548,15 +548,15 @@
           }
         },
         "sha256": {
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
-          "D:\\Digital Twin\\build123d\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
-          "D:\\Digital Twin\\build123d\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
-          "D:\\Digital Twin\\build123d\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
-          "D:\\Digital Twin\\build123d\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
-          "D:\\Digital Twin\\build123d\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
-          "D:\\Digital Twin\\build123d\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
+          "<repo>\\firmware\\race\\race_fw.elf": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
+          "<repo>\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
+          "<repo>\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
+          "<repo>\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
+          "<repo>\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
+          "<repo>\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
+          "<repo>\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
+          "<repo>\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
+          "<repo>\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
         }
       }
     },
@@ -579,7 +579,7 @@
     "errors": [
       [
         "tests.test_race_firmware.TestRaceFirmwareEndToEnd.test_firmware_line_bar_config_is_written_at_runtime",
-        "Traceback (most recent call last):\n  File \"D:\\Digital Twin\\build123d\\tests\\test_race_firmware.py\", line 52, in test_firmware_line_bar_config_is_written_at_runtime\n    ch = RenodeChannel(ELF_PATH, 0.005, mach_name=\"race\")\n  File \"D:\\Digital Twin\\build123d\\bot\\renode.py\", line 74, in __init__\n    self.mach.load_repl(repl)\n    ^^^^^^^^^^^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute 'load_repl'\n"
+        "Traceback (most recent call last):\n  File \"<repo>\\tests\\test_race_firmware.py\", line 52, in test_firmware_line_bar_config_is_written_at_runtime\n    ch = RenodeChannel(ELF_PATH, 0.005, mach_name=\"race\")\n  File \"<repo>\\bot\\renode.py\", line 74, in __init__\n    self.mach.load_repl(repl)\n    ^^^^^^^^^^^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute 'load_repl'\n"
       ]
     ],
     "skips": [],
@@ -663,15 +663,15 @@
           }
         },
         "sha256": {
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
-          "D:\\Digital Twin\\build123d\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
-          "D:\\Digital Twin\\build123d\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
-          "D:\\Digital Twin\\build123d\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
-          "D:\\Digital Twin\\build123d\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
-          "D:\\Digital Twin\\build123d\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
-          "D:\\Digital Twin\\build123d\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
-          "D:\\Digital Twin\\build123d\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
+          "<repo>\\firmware\\race\\race_fw.elf": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95",
+          "<repo>\\firmware\\race\\race_law.c": "4abcf5e419839c69d0031ff3ad79c6488e8ecf24647250422518fa333a652078",
+          "<repo>\\firmware\\race\\race_fwconfig.h": "003aa2877ab82169356a2a16e17aa2497966e302014872dc1043bd9b6ad2c99d",
+          "<repo>\\firmware\\twin\\twin_fwconfig.h": "edd92ad336fcfb039b2259fc3816e905460de1ddcae4e2148ed191d401f298a7",
+          "<repo>\\race\\speed_probe.py": "85208de929eeca31c0515c1e4ad539255facf1cd7a712a7b4de99c4ae40182c0",
+          "<repo>\\bot\\motors.py": "abf93d1654dc5485966d6afbfe1885299b7f2b2d3e6bc78097be424f69ce9622",
+          "<repo>\\bot\\mjcf.py": "3dccd8c78f6a43f24d9bae17a9a4f669d1a465d9fa12f65b12cbad8886286e66",
+          "<repo>\\bot\\loop.py": "5317cbb7020139ab34c71e38af4f6ff9478d50bd3bad8e832ae189dd2de3bdeb",
+          "<repo>\\race\\renode_backend.py": "b04a6903229e286c3ab3ac506845130fc41f4ff9cd912253d9c51a1b38f09be2"
         }
       }
     }
@@ -830,7 +830,7 @@
             "source": "firmware_symbols",
             "fw_seq": 140,
             "artifact": {
-              "artifact": "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf",
+              "artifact": "<repo>\\firmware\\race\\race_fw.elf",
               "sha256": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95"
             },
             "control_time_s": 0.6999995112419128,
@@ -905,7 +905,7 @@
       "errors": [
         [
           "tests.test_race_monitoring.RenodeMonitoring.test_serial_commands_and_symbol_reads_preserve_lockstep_and_gdb_reads_paused_board",
-          "Traceback (most recent call last):\n  File \"D:\\Digital Twin\\build123d\\tests\\test_race_monitoring.py\", line 153, in test_serial_commands_and_symbol_reads_preserve_lockstep_and_gdb_reads_paused_board\n    loop.step_coupling()\n    ~~~~~~~~~~~~~~~~~~^^\n  File \"D:\\Digital Twin\\build123d\\race\\loop.py\", line 126, in step_coupling\n    return super().step_coupling()\n           ~~~~~~~~~~~~~~~~~~~~~^^\n  File \"D:\\Digital Twin\\build123d\\bot\\loop.py\", line 134, in step_coupling\n    motor = self.controller.step(frame)\n  File \"D:\\Digital Twin\\build123d\\race\\renode_backend.py\", line 501, in step\n    self._inject_encoder(0, s.enc_l)\n    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\n  File \"D:\\Digital Twin\\build123d\\race\\renode_backend.py\", line 470, in _inject_encoder\n    ch.run(_EDGE_TICK_S)\n    ~~~~~~^^^^^^^^^^^^^^\n  File \"D:\\Digital Twin\\build123d\\bot\\renode.py\", line 107, in run\n    self.emu.internal.RunFor(\n    ~~~~~~~~~~~~~~~~~~~~~~~~^\n        self.TI.FromMilliseconds(seconds * 1000.0))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAntmicro.Renode.Exceptions.RecoverableException: This action is not available when emulation is already started\r\n   at Antmicro.Renode.Core.Emulation.RunFor(TimeInterval period)\r\n   at InvokeStub_Emulation.RunFor(Object, Span`1)\r\n   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)\n"
+          "Traceback (most recent call last):\n  File \"<repo>\\tests\\test_race_monitoring.py\", line 153, in test_serial_commands_and_symbol_reads_preserve_lockstep_and_gdb_reads_paused_board\n    loop.step_coupling()\n    ~~~~~~~~~~~~~~~~~~^^\n  File \"<repo>\\race\\loop.py\", line 126, in step_coupling\n    return super().step_coupling()\n           ~~~~~~~~~~~~~~~~~~~~~^^\n  File \"<repo>\\bot\\loop.py\", line 134, in step_coupling\n    motor = self.controller.step(frame)\n  File \"<repo>\\race\\renode_backend.py\", line 501, in step\n    self._inject_encoder(0, s.enc_l)\n    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\n  File \"<repo>\\race\\renode_backend.py\", line 470, in _inject_encoder\n    ch.run(_EDGE_TICK_S)\n    ~~~~~~^^^^^^^^^^^^^^\n  File \"<repo>\\bot\\renode.py\", line 107, in run\n    self.emu.internal.RunFor(\n    ~~~~~~~~~~~~~~~~~~~~~~~~^\n        self.TI.FromMilliseconds(seconds * 1000.0))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAntmicro.Renode.Exceptions.RecoverableException: This action is not available when emulation is already started\r\n   at Antmicro.Renode.Core.Emulation.RunFor(TimeInterval period)\r\n   at InvokeStub_Emulation.RunFor(Object, Span`1)\r\n   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)\n"
         ]
       ],
       "skips": [],
@@ -1040,7 +1040,7 @@
       "artifact_sha256": "00acb0bf8dc09b8e3dcdc6718476fd8937aa8ba0e5b6b5d5be2d0c0eab57d147",
       "config_sha256": "4f942b8ceb37c8b6c55f8873b378f6c64b43d4975c8ad497a75210045b5def84",
       "law_sha256": "e1bad313ae877c748b0ae9e9a56b009c19eddfb1394b8cfb5d5decc2a3fac468",
-      "trace": "D:\\Digital Twin\\build123d\\output\\speed-tuning-20261001\\tuned-renode-combined-trace.json"
+      "trace": "<repo>\\output\\speed-tuning-20261001\\tuned-renode-combined-trace.json"
     }
   },
   "screening_trials": [
@@ -1675,7 +1675,7 @@
       "python output/speed-tuning-20261001/gates.py renode"
     ],
     "extra_arm_build_gate": {
-      "command": "python -m unittest -v tests.test_race.TestFirmwareContract.test_race_firmware_builds (D:/tool/bin and Git/bin explicitly prepended to process PATH)",
+      "command": "python -m unittest -v tests.test_race.TestFirmwareContract.test_race_firmware_builds (cross-toolchain dirs explicitly prepended to process PATH)",
       "log_sha256": "caea6a1f017180da01bbd5932f1bfb308d42f5fa1c730021a646ee12a40a2b25",
       "result": "1 test, PASS; production ELF hash unchanged"
     }

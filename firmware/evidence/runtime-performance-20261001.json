@@ -10,7 +10,7 @@
     "Backend-only CPU/memory/latency, stage timing, heartbeat and provenance records; no additional monitoring UI."
   ],
   "production_elf_preserved": {
-    "path": "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf",
+    "path": "<repo>\\firmware\\race\\race_fw.elf",
     "sha256": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95"
   },
   "control_period_s": 0.005,
@@ -109,7 +109,7 @@
       "couplings": 1000,
       "heartbeat_gaps": 0,
       "artifact": {
-        "path": "D:\\Digital Twin\\build123d\\firmware\\race\\race_core.dll",
+        "path": "<repo>\\firmware\\race\\race_core.dll",
         "sha256": "674c23a90dc6004421ef5300aed8889c5ae667ca907a65134e165cf14ece4688"
       },
       "source_sha256": {
@@ -251,7 +251,7 @@
       "couplings": 600,
       "heartbeat_gaps": 0,
       "artifact": {
-        "path": "D:\\Digital Twin\\build123d\\firmware\\race\\race_fw.elf",
+        "path": "<repo>\\firmware\\race\\race_fw.elf",
         "sha256": "b24746f3a1500fe32c9477db04c28fc0fa99475de495eb6812fec91643219d95"
       },
       "source_sha256": {
